@@ -26,6 +26,12 @@ RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O php-cs-fixer
 RUN chmod a+x php-cs-fixer
 RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
+RUN curl -sS https://get.symfony.com/cli/installer | bash
+RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+
+RUN git config --global user.email "fcomarcet1@gmail.com" \ 
+    && git config --global user.name "fcomarcet1"
+
 RUN mkdir -p /appdata/www
 
 USER appuser

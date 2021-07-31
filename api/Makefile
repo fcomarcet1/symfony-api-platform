@@ -36,9 +36,6 @@ stop: ## Stop the containers
 restart: ## Restart the containers
 	$(MAKE) stop && $(MAKE) run
 
-build: ## Rebuilds all the containers
-	U_ID=${UID} docker-compose build
-
 prepare: ## Runs backend commands
 	$(MAKE) composer-install
 
