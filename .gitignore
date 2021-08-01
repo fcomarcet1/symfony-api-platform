@@ -1,3 +1,6 @@
 .idea
 .DS_store
+/.env.local
+/.env.local.php
+/.env.*.local
 
