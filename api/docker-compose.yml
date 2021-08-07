@@ -29,7 +29,7 @@ services:
     # MacOS: host.docker.internal
     ###< XDEBUG 3 ###
     environment:
-      XDEBUG_CLIENT_HOST: 172.23.48.1
+      XDEBUG_CLIENT_HOST: 172.24.128.1
       XDEBUG_CLIENT_PORT: 9003
       PHP_IDE_CONFIG: serverName=Docker
 

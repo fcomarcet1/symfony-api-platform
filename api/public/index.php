@@ -1,6 +1,6 @@
 <?php
 
-//xdebug_info();
+ echo xdebug_info();
 use App\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
