@@ -3,7 +3,7 @@
 .DS_store
 
 ###> symfony/framework-bundle ###
-/api/.env.local
+/api/.env
 /api/.env.local.php
 /api/.env.*.local
 /api/config/secrets/prod/prod.decrypt.private.php
