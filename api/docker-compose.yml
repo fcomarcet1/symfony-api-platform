@@ -59,6 +59,22 @@ services:
       - symfony-api-platform-db-data:/var/lib/mysql
     networks:
       - symfony-api-platform-network
+  symfony-api-platform-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: symfony-api-platform-phpmyadmin
+    restart: always
+    networks:
+      - symfony-api-platform-network
+    ports:
+      - "251:80"
+    environment:
+      # arbitrary server option - allowing you to specify any MySQL/MariaDB server on the login page
+      #- PMA_ARBITRARY=1
+      - PMA_HOST=symfony-api-platform-db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    depends_on:
+      - symfony-api-platform-db
 
 volumes:
   symfony-api-platform-db-data:
