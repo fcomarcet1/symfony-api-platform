@@ -32,8 +32,10 @@
         "symfony/property-info": "5.1.*",
         "symfony/proxy-manager-bridge": "5.1.*",
         "symfony/security-bundle": "5.1.*",
+        "symfony/security-core": "5.1.*",
         "symfony/serializer": "5.1.*",
         "symfony/twig-bundle": "^5.1",
+        "symfony/uid": "5.1.*",
         "symfony/validator": "5.1.*",
         "symfony/yaml": "5.1.*"
     },
