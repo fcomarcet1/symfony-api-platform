@@ -12,7 +12,6 @@ use Doctrine\Persistence\Mapping\MappingException;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 
-
 abstract class BaseRepository
 {
     private ManagerRegistry $managerRegistry;
@@ -71,7 +70,7 @@ abstract class BaseRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function  refreshEntity(object $entity)
+    public function refreshEntity(object $entity)
     {
         $this->getEntityManager()->refresh($entity);
     }
