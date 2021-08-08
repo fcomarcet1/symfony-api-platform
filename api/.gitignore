@@ -9,7 +9,7 @@
 ###< symfony/framework-bundle ###
 
 ###> other files and folders ###
-#docker-compose.yml
+docker-compose.yml
 ###< other files and folders ###
 
 ###> symfony/phpunit-bridge ###
