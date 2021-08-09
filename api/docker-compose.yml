@@ -62,7 +62,7 @@ services:
   symfony-api-platform-phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: symfony-api-platform-phpmyadmin
-    restart: always
+    restart: on-failure
     networks:
       - symfony-api-platform-network
     ports:
