@@ -17,7 +17,7 @@ class EncoderService
      * least one character that is not a letter or number.
      * And it should be between 8-16 characters.
      *
-     * ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$
+     *  REGEX: --> ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$
      *
      *   (?=.*\d) Atleast a digit
      *   (?=.*[a-z]) Atleast a lower case letter
@@ -25,7 +25,6 @@ class EncoderService
      *   (?!.* ) no space
      *   (?=.*[^a-zA-Z0-9]) at least a character except a-zA-Z0-9
      *   .{8,16} between 8 to 16 characters
-     *
      *
      */
 
