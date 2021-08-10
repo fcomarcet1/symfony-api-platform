@@ -1,7 +1,7 @@
 version: '3.5'
 
 services:
-  rabbit:
+  symfony-api-platform-rabbitmq:
     container_name: symfony-api-platform-rabbitmq
     build:
       context: ./docker
@@ -10,8 +10,8 @@ services:
     volumes:
       - ./docker/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
     ports:
-      - 5672:5672
-      - 15672:15672
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - symfony-api-platform-network
 
