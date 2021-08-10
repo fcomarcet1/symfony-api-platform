@@ -22,9 +22,6 @@ docker-compose.yml
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-###> Other files and folders ###
-.php_cs.cache
-###< Other files and folders ###
 
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
