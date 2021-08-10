@@ -10,8 +10,8 @@
         "ext-ctype": "*",
         "ext-fileinfo": "*",
         "ext-iconv": "*",
-        "ext-simplexml": "*",
         "ext-json": "*",
+        "ext-simplexml": "*",
         "api-platform/core": "^2.5",
         "composer/package-versions-deprecated": "1.11.99.2",
         "doctrine/annotations": "^1.0",
@@ -22,6 +22,7 @@
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "phpunit/phpunit": "^9.5",
+        "symfony/amqp-messenger": "5.1.*",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
         "symfony/css-selector": "5.1.*",
@@ -41,7 +42,6 @@
         "symfony/uid": "5.1.*",
         "symfony/validator": "5.1.*",
         "symfony/yaml": "5.1.*"
-
     },
     "require-dev": {
         "ekino/phpstan-banned-code": "^0.4.0",
