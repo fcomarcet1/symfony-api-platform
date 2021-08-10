@@ -53,7 +53,7 @@ be-logs: ## Tails the Symfony dev log
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} tail -f var/log/dev.log
 
 # End backend commands
-ssh-be: ## ssh's into the be container
+ssh-mailer: ## ssh's into the be container
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bash
 
 code-style: ## Runs php-cs to fix code styling following Symfony rules

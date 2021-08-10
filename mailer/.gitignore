@@ -10,5 +10,9 @@
 
 ###> other files and folders ###
 docker-compose.yml
+.php_cs.cache
+.idea
+.DS_Store
+.vscode
 ###< other files and folders ###
 

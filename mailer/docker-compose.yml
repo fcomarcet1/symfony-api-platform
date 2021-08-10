@@ -37,8 +37,8 @@ services:
       - "36100:3306"
     environment:
       MYSQL_DATABASE: symfony_db_mailer
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     command: mysqld --sql_mode="STRICT_ALL_TABLES,NO_ENGINE_SUBSTITUTION"
     volumes:
