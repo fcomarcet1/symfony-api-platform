@@ -11,6 +11,33 @@ App\Entity\User:
         groups: [user_post]
       openapi_context:
         summary: Register a new user
+    resend_email:
+      method: POST
+      path: /users/resend_activation_email
+      controller: App\Api\Action\User\ResendActivationEmail
+      deserialize: false
+      openapi_context:
+        summary: Resend activation email to inactive users
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+
   itemOperations:
     get:
       method: GET
