@@ -39,9 +39,9 @@ class MailerService
      * @throws \Exception
      */
     // param array $payload tendra los 2 valores del template [name, url]
-    public function send(string $receiver, string $template, array $payload)
+    public function sendEmail(string $receiver, string $template, array $payload)
     {
-        // Create email
+        // Create email with subject data and template
         $email = (new Email())
             ->from($this->mailerDefaultSender)
             ->to($receiver)
@@ -49,6 +49,7 @@ class MailerService
             ->html($this->engine->render($template, $payload));
 
         try {
+            // send mail
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
             $this->logger->error(\sprintf('Error sending email: %s', $e->getMessage()));
