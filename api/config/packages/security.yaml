@@ -7,13 +7,30 @@ security:
         users_in_memory: { memory: null }
 
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+        #####< symfony defaults
+        #dev:
+            #pattern: ^/(_(profiler|wdt)|css|images|js)/
+            #security: false
+        #main:
+            #anonymous: true
+            #lazy: true
+            #provider: users_in_memory
+        #####> symfony defaults
+        register:
+            method: [POST]
+            pattern: ^/api/v1/users/register
             security: false
-        main:
-            anonymous: true
-            lazy: true
-            provider: users_in_memory
+        resend_activation_email:
+            pattern: ^/api/v1/users/resend_activation_email
+            methods: [ POST ]
+            security: false
+        docs:
+            pattern: ^/api/v1/docs
+            methods: [ GET ]
+            security: false
+
+
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
