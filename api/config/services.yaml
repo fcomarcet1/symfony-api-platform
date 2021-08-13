@@ -1,8 +1,3 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
-
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
 services:
@@ -31,5 +26,11 @@ services:
     #   tag  -> priority: 100 para que se ejecute antes que los listeners de symfony
     #   Test -> cmd: sf debug:container | grep JsonException
     App\Api\Listener\JsonExceptionResponseTransformerListener:
+        class: App\Api\Listener\JsonExceptionResponseTransformerListener
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
+
+    App\Api\Listener\JWTCreatedListener:
+        class: App\Api\Listener\JWTCreatedListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
