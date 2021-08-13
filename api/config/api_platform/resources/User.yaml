@@ -11,6 +11,7 @@ App\Entity\User:
         groups: [user_post]
       openapi_context:
         summary: Register a new user
+
     resend_email:
       method: POST
       path: /users/resend_activation_email
@@ -41,3 +42,12 @@ App\Entity\User:
   itemOperations:
     get:
       method: GET
+    activate:
+      method: PUT
+      path: /users/{id}/activate
+      controller: App\Api\Action\User\ActivateAccount
+      deserialize: false
+      denormalization_context:
+        groups: [user_activate]
+      openapi_context:
+        summary: Activate user account.
