@@ -4,42 +4,38 @@ security:
             algorithm: auto
 
     providers:
-        users_in_memory: { memory: null }
+        user_provider:
+            id: App\Security\Core\User\UserProvider
 
     firewalls:
-        #####< symfony defaults
-        #dev:
-            #pattern: ^/(_(profiler|wdt)|css|images|js)/
-            #security: false
-        #main:
-            #anonymous: true
-            #lazy: true
-            #provider: users_in_memory
-        #####> symfony defaults
         register:
-            method: [POST]
             pattern: ^/api/v1/users/register
+            methods: [POST]
             security: false
         resend_activation_email:
             pattern: ^/api/v1/users/resend_activation_email
-            methods: [ POST ]
+            methods: [POST]
             security: false
         docs:
             pattern: ^/api/v1/docs
-            methods: [ GET ]
+            methods: [GET]
             security: false
+        login:
+            pattern: /api/v1/users/login
+            stateless: true
+            anonymous: true
+            provider: user_provider
+            json_login:
+                check_path: /api/v1/users/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+        api:
+            pattern: ^/api/v1
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
 
-
-
-
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api/v1, roles: IS_AUTHENTICATED_FULLY }
