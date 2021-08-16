@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service\User;
 
-use App\Exception\User\UserIsActiveException;
+
+use App\Messenger\Message\RequestResetPasswordMessage;
 use App\Messenger\Message\UserRegisteredMessage;
 use App\Messenger\RoutingKey;
 use App\Repository\UserRepository;
@@ -13,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-class ResendActivationEmailService
+class RequestResetPasswordService
 {
     private UserRepository $userRepository;
     private MessageBusInterface $messageBus;
@@ -21,8 +24,7 @@ class ResendActivationEmailService
     public function __construct(
         UserRepository $userRepository,
         MessageBusInterface $messageBus
-    )
-    {
+    ) {
         $this->userRepository = $userRepository;
         $this->messageBus = $messageBus;
     }
@@ -31,35 +33,26 @@ class ResendActivationEmailService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function resendEmail(Request $request)
+    public function sendResetPassword(Request $request)
     {
-        // Get email from request
-        $email = RequestService::getField($request, 'email');
 
-        // find email in DB
-        $user = $this->userRepository->findOneByEmailOrFail($email);
+        // Check email from request ang get user
+        $user = $this->userRepository->findOneByEmailOrFail(
+            RequestService::getField($request, 'email')
+        );
 
-        // Check if user 'isActive'
-        if ($user->isActive()){
-            throw UserIsActiveException::fromEmail($email);
-        }
-        // create new token
-        $user->setToken(\sha1(\uniqid()));
-
-        // save token in DB
+        //set resetTokenPassword and save
+        $user->setResetPasswordToken(\sha1(\uniqid()));
         $this->userRepository->save($user);
 
         // Send message to rabbitmq
         $this->messageBus->dispatch(
-            new UserRegisteredMessage(
+            new RequestResetPasswordMessage(
                 $user->getId(),
-                $user->getName(),
                 $user->getEmail(),
-                $user->getToken()
+                $user->getResetPasswordToken()
             ),
             [new AmqpStamp(RoutingKey::USER_QUEUE)]
         );
-
     }
-
 }

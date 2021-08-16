@@ -36,3 +36,5 @@ framework:
             # 'App\Message\YourMessage': async
             # docs>
             'App\Messenger\Message\UserRegisteredMessage': amqp_user
+            'App\Messenger\Message\RequestResetPasswordMessage': amqp_user
+
