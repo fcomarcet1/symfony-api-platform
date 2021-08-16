@@ -3,18 +3,22 @@
 Simple overview of use/purpose.
 
 ## Description
--WORKING
+
 API REST empleando api-platform. Esta API nos permitirá gestionar nuestras finanzas personales, es decir, nos permitirá:
 - Docker
 - Send activation email -> RabbitMQ
+- Resend activation email
 - JWT Auth (JWT LexikJWTAuthenticationBundle).
 - Reset password
-- Realizar operaciones CRUD sobre nuestros movimientos.
 - Documentation **Api-Platform**.
 
-- WORKING:
-    - 
-
+- IN PROGRESS:
+    - CRUD movements,Realizar operaciones CRUD sobre nuestros movimientos.
+    - groups
+    - OAuth facebook login
+    - Categories
+    - Upload movements file
+   
 
 
 ## Getting Started
