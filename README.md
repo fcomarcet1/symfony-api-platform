@@ -1,4 +1,4 @@
-# 📖 My Finance. API REST con SYMFONY 5.3
+# 📖 My Finance. API REST con SYMFONY 5
 
 Simple overview of use/purpose.
 
@@ -7,22 +7,26 @@ Simple overview of use/purpose.
 API REST empleando api-platform. Esta API nos permitirá gestionar nuestras finanzas personales, es decir, nos permitirá:
 - Docker
 - Send activation email -> RabbitMQ
+- JWT Auth (JWT LexikJWTAuthenticationBundle).
+- Reset password
 - Realizar operaciones CRUD sobre nuestros movimientos.
 - Documentation **Api-Platform**.
 
 - WORKING:
-    - JWT LexikJWTAuthenticationBundle.
+    - 
 
 
 
 ## Getting Started
 
 1. Clona el repositorio.
-2. Ejecuta `make run` para levantar los contenedores(nginx + php8.0 + MySQL8)
-3. Ejecuta `make composer-install` en la raíz del proyecto.
-4. Instala las migraciones de base de datos: `make migrations`.
-5. Accede el servidor local de desarrollo para comprobar que funciona correctamente: `http://localhost:250`.
-6. Happy codding!
+2. Ejecuta `cd api` && `make run` para levantar los contenedores(nginx + php8.0 + MySQL8)
+3. Ejecuta `cd mailer` && `make run` para levantar Mailer Service
+4. Ejecuta `cd rabbitmq` && `make run` para levantar RabbitMQ Service
+5. Ejecuta `make composer-install` en la raíz del proyecto.
+6. Instala las migraciones de base de datos: `make migrations`.
+7. Accede el servidor local de desarrollo para comprobar que funciona correctamente: `http://localhost:250`.
+8. Happy codding!
 
 
 ## Authors
