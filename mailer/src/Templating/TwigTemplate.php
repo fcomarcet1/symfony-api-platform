@@ -7,4 +7,5 @@ namespace Mailer\Templating;
 abstract class TwigTemplate
 {
     public const USER_REGISTER = 'user/register.twig';
+    public const RESET_PASSWORD = 'user/request_reset_password.twig';
 }

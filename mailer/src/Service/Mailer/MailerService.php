@@ -16,8 +16,10 @@ class MailerService
 {
 
     private const TEMPLATE_SUBJECT_MAP = [
-        TwigTemplate::USER_REGISTER => 'Bienvenid@ a My Finance App!!. '
+        TwigTemplate::USER_REGISTER => 'Bienvenid@ a my Finance App!',
+        TwigTemplate::RESET_PASSWORD => 'Restablecer contraseña'
     ];
+
     private MailerInterface $mailer;
     private Environment $engine;
     private LoggerInterface $logger;

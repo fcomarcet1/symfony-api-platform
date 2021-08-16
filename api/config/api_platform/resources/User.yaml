@@ -11,6 +11,7 @@ App\Entity\User:
         groups: [user_post]
       openapi_context:
         summary: Register a new user
+
     resend_activation_email:
       method: POST
       path: /users/resend_activation_email
@@ -37,12 +38,13 @@ App\Entity\User:
                   properties:
                     message:
                       type: string
+
     login:
       method: POST
       route_name: api_login_check
       openapi_context:
         summary: Login a user in the API
-        description: In field Username use your resgistered email.
+        description: In field Username use your registered email.
         requestBody:
           content:
             application/json:
@@ -66,6 +68,7 @@ App\Entity\User:
                   properties:
                     token:
                       type: string
+
     request_reset_password:
       method: POST
       path: /users/request_reset_password
@@ -92,6 +95,39 @@ App\Entity\User:
                   properties:
                     message:
                       type: string
+
+    reset_password:
+      method: POST
+      path: /users/reset_password
+      controller: App\Api\Action\User\ResetPassword
+      deserialize: false
+      openapi_context:
+        summary: Reset user password
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                    required: true
+                  resetPasswordToken:
+                    type: string
+                    required: true
+                  password:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    User:
+                      type: object
 
   itemOperations:
     get:
