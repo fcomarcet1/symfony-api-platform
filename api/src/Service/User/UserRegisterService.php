@@ -31,12 +31,8 @@ class UserRegisterService
         $this->messageBus = $messageBus;
     }
 
-    public function create(Request $request): User
+    public function create(string $name, string $email, $password): User
     {
-        // Get data from request
-        $name = RequestService::getField($request, 'name');
-        $email = RequestService::getField($request, 'email');
-        $password = RequestService::getField($request, 'password');
 
         // create new user
         $user = new User($name, $email);
