@@ -18,10 +18,7 @@ class ResendActivationEmailService
     private UserRepository $userRepository;
     private MessageBusInterface $messageBus;
 
-    public function __construct(
-        UserRepository $userRepository,
-        MessageBusInterface $messageBus
-    )
+    public function __construct(UserRepository $userRepository, MessageBusInterface $messageBus)
     {
         $this->userRepository = $userRepository;
         $this->messageBus = $messageBus;
@@ -31,11 +28,8 @@ class ResendActivationEmailService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function resendEmail(Request $request)
+    public function resendEmail(string $email)
     {
-        // Get email from request
-        $email = RequestService::getField($request, 'email');
-
         // find email in DB
         $user = $this->userRepository->findOneByEmailOrFail($email);
 
