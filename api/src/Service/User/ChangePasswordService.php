@@ -29,11 +29,10 @@ class ChangePasswordService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function changePassword(Request $request, User $user): User
+    public function changePassword(string $userId, string $oldPassword, string $newPassword): User
     {
-        // Get oldPassword && newPassword from request
-        $oldPassword = RequestService::getField($request, 'oldPassword');
-        $newPassword = RequestService::getField($request, 'newPassword');
+
+        $user = $this->userRepository->findOneByIdOrFail($userId);
 
         // Check if oldPassword is valid
         if (!$this->encoderService->isValidPassword($user, $oldPassword)){

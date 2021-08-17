@@ -25,13 +25,10 @@ class ActivateAccountService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function activate(Request $request, string $id): User
+    public function activate(string $id, string $token): User
     {
         // find user
-        $user = $this->userRepository->findOneInactiveByIdAndTokenOrFail(
-            $id,
-            RequestService::getField($request, 'token')
-        );
+        $user = $this->userRepository->findOneInactiveByIdAndTokenOrFail($id, $token);
 
         $user->setActive(true);
         $user->setToken(null);
