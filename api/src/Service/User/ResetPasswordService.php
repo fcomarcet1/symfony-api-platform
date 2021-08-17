@@ -27,13 +27,12 @@ class ResetPasswordService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function reset(Request $request): User
+    public function reset(
+        string $userId,
+        string $resetPasswordToken,
+        string $newPassword
+    ): User
     {
-        //Get fields from request uid & resetPasswordToken & newPassword
-        $userId = RequestService::getField($request, 'userId');
-        $resetPasswordToken = RequestService::getField($request, 'resetPasswordToken');
-        $newPassword = RequestService::getField($request, 'password');
-
         // Find user in DB
         $user = $this->userRepository->findOneByIdAndResetPasswordToken($userId, $resetPasswordToken);
 
