@@ -24,9 +24,9 @@ API REST empleando api-platform. Esta API nos permitirá gestionar nuestras fina
 ## Getting Started
 
 1. Clona el repositorio.
-2. Ejecuta `cd api` && `make run` para levantar los contenedores(nginx + php8.0 + MySQL8)
-3. Ejecuta `cd mailer` && `make run` para levantar Mailer Service
-4. Ejecuta `cd rabbitmq` && `make run` para levantar RabbitMQ Service
+2. Ejecuta `cd ~/symfony-api-platform/api` && `make run` para levantar los contenedores(nginx + php8.0 + MySQL8)
+3. Ejecuta `cd ~/symfony-api-platform/mailer` && `make run` para levantar Mailer Service
+4. Ejecuta `cd ~/symfony-api-platform/rabbitmq` && `make run` para levantar RabbitMQ Service
 5. Ejecuta `make composer-install` en la raíz del proyecto.
 6. Instala las migraciones de base de datos: `make migrations`.
 7. Accede el servidor local de desarrollo para comprobar que funciona correctamente: `http://localhost:250`.

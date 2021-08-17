@@ -15,4 +15,9 @@ class PasswordInvalidException extends BadRequestHttpException
                         and at least one character that is not a letter or number.
                         And it should be between 8-16 characters');
     }
+
+    public static function oldPasswordDoesNotMatch(): self
+    {
+        throw new self('Old password does not match');
+    }
 }

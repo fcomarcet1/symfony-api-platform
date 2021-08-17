@@ -27,5 +27,5 @@ down: ## Stop the containers
 restart: ## Restart the containers
 	$(MAKE) stop && $(MAKE) run
 
-ssh: ## ssh's into the container
+ssh-rabbitmq: ## ssh's into the rabbitmq container
 	U_ID=${UID} docker exec -it --user ${UID} ${RABBIT} bash

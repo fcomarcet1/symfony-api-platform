@@ -24,7 +24,7 @@ class RequestResetPasswordMessageHandler implements MessageHandlerInterface
      */
     public function __invoke(RequestResetPasswordMessage $message): void
     {
-        throw new \LogicException('Test errors in rabbitmq');
+
         // create payload for send message
         // http://localhost:3000/reset_password?uid=hdfud-6dgd7-d8dbsk-8dbhd89&rpt=6dg7djndg6d9ndbdjdnm
         $payload = [

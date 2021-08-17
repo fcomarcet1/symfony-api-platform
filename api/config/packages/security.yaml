@@ -38,6 +38,10 @@ security:
             pattern: ^/api/v1/users/request_reset_password
             methods: [POST]
             security: false
+        reset_password:
+            pattern: ^/api/v1/users/reset_password
+            methods: [POST]
+            security: false
         api:
             pattern: ^/api/v1
             stateless: true

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service\User;
 
 use App\Entity\User;
+use App\Exception\Password\PasswordInvalidException;
 use App\Repository\UserRepository;
 use App\Service\Password\EncoderService;
 use App\Service\Request\RequestService;
@@ -12,8 +13,9 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Symfony\Component\HttpFoundation\Request;
 
-class ResetPasswordService
+class ChangePasswordService
 {
+
     private UserRepository $userRepository;
     private EncoderService $encoderService;
 
@@ -27,28 +29,24 @@ class ResetPasswordService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function reset(Request $request): User
+    public function changePassword(Request $request, User $user): User
     {
-        //Get fields from request uid & resetPasswordToken & newPassword
-        $userId = RequestService::getField($request, 'userId');
-        $resetPasswordToken = RequestService::getField($request, 'resetPasswordToken');
-        $newPassword = RequestService::getField($request, 'password');
+        // Get oldPassword && newPassword from request
+        $oldPassword = RequestService::getField($request, 'oldPassword');
+        $newPassword = RequestService::getField($request, 'newPassword');
 
-        // Find user in DB
-        $user = $this->userRepository->findOneByIdAndResetPasswordToken($userId, $resetPasswordToken);
+        // Check if oldPassword is valid
+        if (!$this->encoderService->isValidPassword($user, $oldPassword)){
+            throw PasswordInvalidException::oldPasswordDoesNotMatch();
+        }
 
-        //Set new password & resetPasswordToken = null
+        // Set newPassword && Encode newPassword
         $user->setPassword($this->encoderService->generateEncodedPassword($user, $newPassword));
-        $user->setResetPasswordToken(null);
 
-        // Save in DB
+        // save user in db
         $this->userRepository->save($user);
 
         return $user;
-
+        
     }
-
-
-
-
 }
