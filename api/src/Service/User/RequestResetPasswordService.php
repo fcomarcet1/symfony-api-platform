@@ -33,13 +33,10 @@ class RequestResetPasswordService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function sendResetPassword(Request $request)
+    public function sendResetPassword(string $email)
     {
-
         // Check email from request ang get user
-        $user = $this->userRepository->findOneByEmailOrFail(
-            RequestService::getField($request, 'email')
-        );
+        $user = $this->userRepository->findOneByEmailOrFail($email);
 
         //set resetTokenPassword and save
         $user->setResetPasswordToken(\sha1(\uniqid()));
