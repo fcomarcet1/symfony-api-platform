@@ -21,11 +21,15 @@ run: ## Start the containers
 	docker network create symfony-api-platform-network || true
 	U_ID=${UID} docker-compose up -d
 
+run-ro: ## Start the containers && remove orphans containers
+	docker network create symfony-api-platform-network || true
+    U_ID=${UID} docker-compose up -d --remove-orphans
+
 build:
 	U_ID=${UID} docker-compose build
 
 down: ## Stop the containers
-	U_ID=${UID} docker-compose down
+	U_ID=${UID} docker-compose down --remove-orphans
 
 kill:
 	U_ID=${UID} docker-compose kill

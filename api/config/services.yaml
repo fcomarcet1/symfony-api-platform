@@ -28,9 +28,29 @@ services:
     App\Api\Listener\JsonExceptionResponseTransformerListener:
         class: App\Api\Listener\JsonExceptionResponseTransformerListener
         tags:
-            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
+            - {
+                name: kernel.event_listener,
+                event: kernel.exception,
+                method: onKernelException,
+                priority: 100
+            }
 
+    # Custom JWT payload
     App\Api\Listener\JWTCreatedListener:
         class: App\Api\Listener\JWTCreatedListener
         tags:
-            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+            - {
+                name: kernel.event_listener,
+                event: lexik_jwt_authentication.on_jwt_created,
+                method: onJWTCreated
+            }
+
+    # Custom JWT response on authentication success
+    App\Api\Listener\JWTAuthenticationSuccessListener:
+        class: App\Api\Listener\JWTAuthenticationSuccessListener
+        tags:
+            - {
+                name: kernel.event_listener,
+                event: lexik_jwt_authentication.on_authentication_success,
+                method: onAuthenticationSuccessResponse
+            }

@@ -1,24 +1,32 @@
 version: '3.5'
 
 services:
+
   symfony-api-platform-mailer:
     container_name: symfony-api-platform-mailer
     build:
       context: docker/php
       args:
         UID: $U_ID
+    ###> XDEBUG 3 ###
+    # Use your client IP here
+    # Linux: run "ip a | grep docker0"
+    # Windows (with WSL2): Run "grep nameserver /etc/resolv.conf  | cut -d ' ' -f2"
+    # MacOS: host.docker.internal
+    ###< XDEBUG 3 ###
     environment:
-      PHP_IDE_CONFIG: serverName=Docker
-      PHP_XDEBUG_ENABLED: 1
-      XDEBUG_CONFIG: remote_host=172.17.0.1 remote_port=9005 # Linux users
-    #      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9005 # MacOS users
+      XDEBUG_CLIENT_HOST: 172.24.128.1
+      XDEBUG_CLIENT_PORT: 9003
+      PHP_IDE_CONFIG: serverName=DockerMailer
+
     volumes:
       - ./:/appdata/www
-      - ./docker/php/xdebug-linux.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      #      - ./docker/php/xdebug-linux.ini:/usr/local/etc/php/conf.d/xdebug.ini
       #      - ./docker/php/xdebug-macos.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - ~/.ssh/id_rsa:/home/appuser/.ssh/id_rsa
     depends_on:
-      - symfony-api-platform-mailer-db
+      - symfony-api-platform-db
     networks:
       - symfony-api-platform-network
 
@@ -26,11 +34,11 @@ services:
     container_name: symfony-api-platform-mailer-db
     image: mysql:8.0
     ports:
-      - 36100:3306
+      - "36100:3306"
     environment:
-      MYSQL_DATABASE: symfony_mailer_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: symfony_db_mailer
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     command: mysqld --sql_mode="STRICT_ALL_TABLES,NO_ENGINE_SUBSTITUTION"
     volumes:
@@ -38,12 +46,29 @@ services:
     networks:
       - symfony-api-platform-network
 
+  symfony-api-platform-mailer-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: symfony-api-platform-mailer-phpmyadmin
+    restart: always
+    networks:
+      - symfony-api-platform-network
+    ports:
+      - "252:80"
+    environment:
+      # arbitrary server option - allowing you to specify any MySQL/MariaDB server on the login page
+      #- PMA_ARBITRARY=1
+      - PMA_HOST=symfony-api-platform-mailer-db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    depends_on:
+      - symfony-api-platform-mailer-db
+
   symfony-api-platform-mailcatcher:
       container_name: symfony-api-platform-mailcatcher
       image: schickling/mailcatcher
       ports:
-        - 1080:1080
-        - 1025:1025
+        - "1080:1080"
+        - "1025:1025"
       depends_on:
         - symfony-api-platform-mailer-db
       networks:

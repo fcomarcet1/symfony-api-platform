@@ -37,8 +37,7 @@ class User implements UserInterface
 
     }
 
-
-
+    
     public function addDomainEvent(Event $event): void
     {
         $this->domainEvents[] = $event;
