@@ -43,4 +43,24 @@ class RequestResetPasswordActionTest extends UserTestBase
 
         $this->assertEquals(JsonResponse::HTTP_NOT_FOUND, $response->getStatusCode());
     }
+
+    public function testRequestResetPasswordForEmptyEmail(): void
+    {
+        $payload = [
+            'email' => '',
+        ];
+
+        self::$peter->request(
+            'POST',
+            \sprintf('%s/request_reset_password', $this->endpoint),
+            [],
+            [],
+            [],
+            \json_encode($payload)
+        );
+
+        $response = self::$peter->getResponse();
+
+        $this->assertEquals(JsonResponse::HTTP_NOT_FOUND, $response->getStatusCode());
+    }
 }
