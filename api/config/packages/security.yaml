@@ -20,9 +20,13 @@ security:
             pattern: ^/api/v1/docs
             methods: [GET]
             security: false
-        activate_user:
-            pattern: ^/api/v1/users/activate/
-            methods: [PUT]
+        request_reset_password:
+            pattern: ^/api/v1/users/request_reset_password
+            methods: [POST]
+            security: false
+        reset_password:
+            pattern: ^/api/v1/users/reset_password
+            methods: [POST]
             security: false
         login:
             pattern: /api/v1/users/login
@@ -34,14 +38,6 @@ security:
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
-        request_reset_password:
-            pattern: ^/api/v1/users/request_reset_password
-            methods: [POST]
-            security: false
-        reset_password:
-            pattern: ^/api/v1/users/reset_password
-            methods: [POST]
-            security: false
         api:
             pattern: ^/api/v1
             stateless: true

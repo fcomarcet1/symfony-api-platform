@@ -96,38 +96,6 @@ App\Entity\User:
                     message:
                       type: string
 
-    reset_password:
-      method: POST
-      path: /users/reset_password
-      controller: App\Api\Action\User\ResetPassword
-      deserialize: false
-      openapi_context:
-        summary: Reset user password
-        requestBody:
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  userId:
-                    type: string
-                    required: true
-                  resetPasswordToken:
-                    type: string
-                    required: true
-                  password:
-                    type: string
-                    required: true
-        responses:
-          200:
-            description: OK
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    User:
-                      type: object
 
     change_password:
       method: POST
@@ -162,3 +130,49 @@ App\Entity\User:
         groups: [user_activate]
       openapi_context:
         summary: Activates a user account
+    reset_password:
+      method: PUT
+      path: /users/{id}/reset_password
+      controller: App\Api\Action\User\ResetPassword
+      deserialize: false
+      openapi_context:
+        summary: Reset user password
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resetPasswordToken:
+                    type: string
+                    required: true
+                  password:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: OK
+            content:
+              application/ld+json:
+                schema:
+                  $ref: '#/components/schemas/User:jsonld-user_read'
+    change_password:
+      method: PUT
+      path: /users/{id}/change_password
+      controller: App\Api\Action\User\ChangePassword
+      deserialize: false
+      openapi_context:
+        summary: Changes logged user password
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  oldPassword:
+                    type: string
+                    required: true
+                  newPassword:
+                    type: string
+                    required: true
+
