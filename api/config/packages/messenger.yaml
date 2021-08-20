@@ -1,9 +1,5 @@
 framework:
     messenger:
-        # <docs
-        # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
-        # failure_transport: failed
-        # docs>
         serializer:
             default_serializer: messenger.transport.symfony_serializer
             symfony_serializer:
@@ -11,12 +7,6 @@ framework:
                 context: { }
 
         transports:
-            # <docs
-            # https://symfony.com/doc/current/messenger.html#transport-configuration
-            # async: '%env(MESSENGER_TRANSPORT_DSN)%'
-            # failed: 'doctrine://default?queue_name=failed'
-            # sync: 'sync://'
-            # docs>
             # Add new transport -> amqp_user
             amqp_user:
                 dsn: '%env(string:MESSENGER_TRANSPORT_DSN)%'
@@ -31,10 +21,6 @@ framework:
                     auto_setup: true
 
         routing:
-            # <docs
-            # Route your messages to the transports
-            # 'App\Message\YourMessage': async
-            # docs>
             'App\Messenger\Message\UserRegisteredMessage': amqp_user
             'App\Messenger\Message\RequestResetPasswordMessage': amqp_user
 
