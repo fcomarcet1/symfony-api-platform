@@ -27,11 +27,7 @@ class ResetPasswordService
      * @throws OptimisticLockException
      * @throws ORMException
      */
-    public function reset(
-        string $userId,
-        string $resetPasswordToken,
-        string $newPassword
-    ): User
+    public function reset(string $userId, string $resetPasswordToken, string $newPassword): User
     {
         // Find user in DB
         $user = $this->userRepository->findOneByIdAndResetPasswordToken($userId, $resetPasswordToken);

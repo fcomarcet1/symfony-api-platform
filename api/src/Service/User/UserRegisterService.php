@@ -10,8 +10,6 @@ use App\Messenger\Message\UserRegisteredMessage;
 use App\Messenger\RoutingKey;
 use App\Repository\UserRepository;
 use App\Service\Password\EncoderService;
-use App\Service\Request\RequestService;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\MessageBusInterface;
 
@@ -33,9 +31,9 @@ class UserRegisterService
 
     public function create(string $name, string $email, $password): User
     {
-
         // create new user
         $user = new User($name, $email);
+
         // encode password with encoder service
         $user->setPassword($this->encoderService->generateEncodedPassword($user, $password));
 
@@ -45,7 +43,7 @@ class UserRegisterService
             throw UserAlreadyExistException::fromEmail($email);
         }
 
-        // send message
+        // send message to rabbitmq
         $this->messageBus->dispatch(
             new UserRegisteredMessage($user->getId(), $user->getName(), $user->getEmail(), $user->getToken()),
             [new AmqpStamp(RoutingKey::USER_QUEUE)]

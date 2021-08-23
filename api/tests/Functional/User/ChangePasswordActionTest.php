@@ -10,7 +10,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ChangePasswordActionTest extends UserTestBase
 {
-
+    /**
+     * @throws DBALException
+     * @throws Exception
+     */
     public function testChangePassword(): void
     {
         $payload = [
@@ -32,10 +35,14 @@ class ChangePasswordActionTest extends UserTestBase
         $this->assertEquals(JsonResponse::HTTP_OK, $response->getStatusCode());
     }
 
+    /**
+     * @throws DBALException
+     * @throws Exception
+     */
     public function testChangePasswordWithInvalidOldPassword(): void
     {
         $payload = [
-            'oldPassword' => 'non-a-good-one',
+            'oldPassword' => 'non-a-good-one-password',
             'newPassword' => 'new-password',
         ];
 

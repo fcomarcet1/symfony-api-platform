@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ActivateAccountService
 {
-
     private UserRepository $userRepository;
 
     public function __construct(UserRepository $userRepository)

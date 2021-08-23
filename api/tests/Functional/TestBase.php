@@ -27,6 +27,7 @@ class TestBase extends WebTestCase
     {
         // anonymous client(not authenticated)
         if (self::$client === null) {
+
             self::$client = static::createClient();
             self::$client->setServerParameters([
                     'CONTENT_TYPE' => 'application/json',
@@ -34,8 +35,8 @@ class TestBase extends WebTestCase
                 ]
             );
         }
-        // Authenticated clients
 
+        // Authenticated clients
         if (self::$peter === null) {
             self::$peter = clone self::$client;
             $this->createAuthenticatedUser(self::$peter, 'peter@api.com');
@@ -54,7 +55,11 @@ class TestBase extends WebTestCase
 
     private function createAuthenticatedUser(KernelBrowser &$client, string $email): void
     {
-        $user = $this->getContainer()->get('App\Repository\UserRepository')->findOneByEmailOrFail($email);
+        $user = $this
+            ->getContainer()
+            ->get('App\Repository\UserRepository')
+            ->findOneByEmailOrFail($email);
+
         $token = $this
             ->getContainer()
             ->get('Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface')

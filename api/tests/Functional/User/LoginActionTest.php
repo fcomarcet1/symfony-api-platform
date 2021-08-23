@@ -42,7 +42,14 @@ class LoginActionTest extends UserTestBase
             'password' => 'invalid-password',
         ];
 
-        self::$peter->request('POST', \sprintf('%s/login_check', $this->endpoint), [], [], [], \json_encode($payload));
+        self::$peter->request(
+            'POST',
+            \sprintf('%s/login_check', $this->endpoint),
+            [],
+            [],
+            [],
+            \json_encode($payload)
+        );
 
         $response = self::$peter->getResponse();
 
