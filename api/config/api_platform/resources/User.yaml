@@ -1,14 +1,14 @@
 App\Entity\User:
   attributes:
     normalization_context:
-      groups: [user_read]
+      groups: [ user_read ]
   collectionOperations:
     register:
       method: POST
       path: /users/register
       controller: App\Api\Action\User\Register
       denormalization_context:
-        groups: [user_post]
+        groups: [ user_post ]
       openapi_context:
         summary: Register a new user
 
@@ -96,7 +96,6 @@ App\Entity\User:
                     message:
                       type: string
 
-
     change_password:
       method: POST
       path: /users/change_password
@@ -117,6 +116,22 @@ App\Entity\User:
                   newPassword:
                     type: string
                     required: true
+    upload_avatar:
+      method: POST
+      path: /users/{id}/avatar
+      controller: App\Api\Action\User\UploadAvatar
+      deserialize: false
+      openapi_context:
+        summary: Updates the user avatar
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  avatar:
+                    type: string
+                    format: binary
 
   itemOperations:
     get:
@@ -127,9 +142,10 @@ App\Entity\User:
       controller: App\Api\Action\User\ActivateAccount
       deserialize: false
       denormalization_context:
-        groups: [user_activate]
+        groups: [ user_activate ]
       openapi_context:
         summary: Activates a user account
+
     reset_password:
       method: PUT
       path: /users/{id}/reset_password
@@ -156,6 +172,7 @@ App\Entity\User:
               application/ld+json:
                 schema:
                   $ref: '#/components/schemas/User:jsonld-user_read'
+
     change_password:
       method: PUT
       path: /users/{id}/change_password

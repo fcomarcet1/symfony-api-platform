@@ -11,9 +11,11 @@ API REST empleando api-platform. Esta API nos permitirá gestionar nuestras fina
 - JWT Auth (JWT LexikJWTAuthenticationBundle).
 - Reset password
 - Documentation **Api-Platform**.
-- Tests.
+- Include Tests.
 
 - IN PROGRESS:
+    - TDD 
+    - Upload user avatar Amazon S3/Digital Ocean Cloud 
     - CRUD movements,Realizar operaciones CRUD sobre nuestros movimientos.
     - groups
     - OAuth facebook login

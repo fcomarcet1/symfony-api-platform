@@ -1,17 +1,26 @@
 api_platform:
-    mapping:
-        paths:
-            - '%kernel.project_dir%/config/api_platform/resources'
-    patch_formats:
-        json: ['application/merge-patch+json']
-    swagger:
-        versions: [ 3 ]
-        api_keys:
-            apiKey:
-                name: Authorization
-                type: header
-    enable_swagger_ui: false
-    enable_re_doc: true
-    title: Symfony API Platform
-    version: 1.0
-    show_webby: false
+  title: My Finance API REST
+  description: |
+    This is a API REST application of the [API Platform](https://api-platform.com) framework.
+    [Its source code](https://github.com/api-platform/demo) includes various examples, check it out!
+    You may also be interested by [the GraphQL entrypoint](/graphql).
+    [A PWA](/) and [an admin](/admin) are consuming this API.
+  version: 1.0.0
+  mapping:
+    paths:
+      - '%kernel.project_dir%/config/api_platform/resources'
+  patch_formats:
+    json: [ 'application/merge-patch+json' ]
+  swagger:
+    versions: [ 3,2 ]
+    api_keys:
+      apiKey:
+        name: Authorization
+        type: header
+  enable_swagger_ui: false
+  enable_re_doc: true
+  show_webby: false
+
+
+
+
