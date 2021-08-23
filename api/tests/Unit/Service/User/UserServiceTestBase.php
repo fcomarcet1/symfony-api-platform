@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Tests\Unitary\Service\User;
+namespace App\Tests\Unit\Service\User;
 
 use App\Repository\UserRepository;
 use App\Service\Password\EncoderService;

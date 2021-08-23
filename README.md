@@ -11,6 +11,7 @@ API REST empleando api-platform. Esta API nos permitirá gestionar nuestras fina
 - JWT Auth (JWT LexikJWTAuthenticationBundle).
 - Reset password
 - Documentation **Api-Platform**.
+- Tests.
 
 - IN PROGRESS:
     - CRUD movements,Realizar operaciones CRUD sobre nuestros movimientos.

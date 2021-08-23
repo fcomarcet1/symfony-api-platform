@@ -38,16 +38,17 @@ class EncoderService
 
     public function generateEncodedPassword(UserInterface $user, string $password)
     {
+
+        // check minimum length
+        if (\strlen($password) < self::MINIMUM_LENGTH){
+            throw PasswordException::invalidLength();
+        }
         //TODO: Test
         /* // check with regex expresion
         if (\preg_match(self::REGEX, $password)){
             throw PasswordInvalidException::invalidPassword();
         }*/
 
-        // check minimum length
-        if (\strlen($password) < self::MINIMUM_LENGTH){
-            throw PasswordException::invalidLength();
-        }
         // call service userPasswordEncode for encode passwd
         return $this->userPasswordEncoder->encodePassword($user, $password);
     }
