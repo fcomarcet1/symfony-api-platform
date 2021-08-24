@@ -16,6 +16,9 @@
             "src/Entity/.gitignore"
         ]
     },
+    "aws/aws-sdk-php": {
+        "version": "3.191.2"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.2"
     },
@@ -114,6 +117,15 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "guzzlehttp/guzzle": {
+        "version": "7.3.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.4.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.8.2"
+    },
     "hautelook/alice-bundle": {
         "version": "2.1",
         "recipe": {
@@ -137,6 +149,31 @@
     "lcobucci/jwt": {
         "version": "4.1.4"
     },
+    "league/flysystem": {
+        "version": "2.2.3"
+    },
+    "league/flysystem-aws-s3-v3": {
+        "version": "2.1.0"
+    },
+    "league/flysystem-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "446659fccbea4a0076de3d59268fc7d478c48296"
+        },
+        "files": [
+            "config/packages/flysystem.yaml",
+            "var/storage/.gitignore"
+        ]
+    },
+    "league/flysystem-memory": {
+        "version": "2.0.6"
+    },
+    "league/mime-type-detection": {
+        "version": "1.7.0"
+    },
     "lexik/jwt-authentication-bundle": {
         "version": "2.5",
         "recipe": {
@@ -154,6 +191,9 @@
     },
     "monolog/monolog": {
         "version": "2.3.2"
+    },
+    "mtdowling/jmespath.php": {
+        "version": "2.6.1"
     },
     "myclabs/deep-copy": {
         "version": "1.10.2"
@@ -257,11 +297,20 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
@@ -471,6 +520,9 @@
             "config/packages/prod/monolog.yaml",
             "config/packages/test/monolog.yaml"
         ]
+    },
+    "symfony/options-resolver": {
+        "version": "v5.1.11"
     },
     "symfony/orm-pack": {
         "version": "v2.1.0"
