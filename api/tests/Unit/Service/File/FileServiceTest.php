@@ -27,14 +27,16 @@ class FileServiceTest extends TestCase
     {
         parent::setUp();
 
-        $this->storage   = $this
+        $this->storage = $this
             ->getMockBuilder(FilesystemInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $this->logger    = $this
+
+        $this->logger = $this
             ->getMockBuilder(LoggerInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
+
         $this->mediaPath = 'https://storage.com/';
 
         $this->service = new FileService($this->storage, $this->logger, $this->mediaPath);

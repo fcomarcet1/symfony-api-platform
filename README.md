@@ -4,19 +4,18 @@ Simple overview of use/purpose.
 
 ## Description
 
-API REST empleando api-platform. Esta API nos permitirá gestionar nuestras finanzas personales, es decir, nos permitirá:
-- Docker
+API REST empleando api-platform. Esta API nos permitirá gestionar nuestras finanzas personales.
+
 - Send activation email -> RabbitMQ
 - Resend activation email
 - JWT Auth (JWT LexikJWTAuthenticationBundle).
 - Reset password
 - Documentation **Api-Platform**.
-- Include Tests.
+- Upload user avatar Amazon S3/Digital Ocean Cloud
+- Testing.
 
 - IN PROGRESS:
-    - TDD 
-    - Upload user avatar Amazon S3/Digital Ocean Cloud 
-    - CRUD movements,Realizar operaciones CRUD sobre nuestros movimientos.
+    - CRUD movements.
     - groups
     - OAuth facebook login
     - Categories
