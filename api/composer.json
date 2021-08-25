@@ -18,6 +18,7 @@
     "doctrine/doctrine-bundle": "^2.3",
     "doctrine/doctrine-migrations-bundle": "^3.1",
     "doctrine/orm": "^2.9",
+    "facebook/graph-sdk": "^5.7",
     "league/flysystem-aws-s3-v3": "^1.0",
     "league/flysystem-bundle": "^1.5",
     "league/flysystem-memory": "^1.0",

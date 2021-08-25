@@ -108,6 +108,9 @@
     "ekino/phpstan-banned-code": {
         "version": "v0.4.0"
     },
+    "facebook/graph-sdk": {
+        "version": "5.7.0"
+    },
     "fakerphp/faker": {
         "version": "v1.15.0"
     },

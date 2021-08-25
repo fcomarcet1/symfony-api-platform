@@ -1,49 +1,53 @@
 security:
-    encoders:
-        App\Entity\User:
-            algorithm: auto
+  encoders:
+    App\Entity\User:
+      algorithm: auto
 
-    providers:
-        user_provider:
-            id: App\Security\Core\User\UserProvider
+  providers:
+    user_provider:
+      id: App\Security\Core\User\UserProvider
 
-    firewalls:
-        register:
-            pattern: ^/api/v1/users/register
-            methods: [POST]
-            security: false
-        resend_activation_email:
-            pattern: ^/api/v1/users/resend_activation_email
-            methods: [POST]
-            security: false
-        docs:
-            pattern: ^/api/v1/docs
-            methods: [GET]
-            security: false
-        request_reset_password:
-            pattern: ^/api/v1/users/request_reset_password
-            methods: [POST]
-            security: false
-        reset_password:
-            pattern: ^/api/v1/users/reset_password
-            methods: [POST]
-            security: false
-        login:
-            pattern: /api/v1/users/login
-            stateless: true
-            anonymous: true
-            provider: user_provider
-            json_login:
-                check_path: /api/v1/users/login_check
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
-        api:
-            pattern: ^/api/v1
-            stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
+  firewalls:
+    register:
+      pattern: ^/api/v1/users/register
+      methods: [ POST ]
+      security: false
+    resend_activation_email:
+      pattern: ^/api/v1/users/resend_activation_email
+      methods: [ POST ]
+      security: false
+    docs:
+      pattern: ^/api/v1/docs
+      methods: [ GET ]
+      security: false
+    request_reset_password:
+      pattern: ^/api/v1/users/request_reset_password
+      methods: [ POST ]
+      security: false
+    reset_password:
+      pattern: ^/api/v1/users/reset_password
+      methods: [ POST ]
+      security: false
+    facebook_auth:
+      pattern: ^/api/v1/users/facebook/auth
+      methods: [ POST ]
+      security: false
+    login:
+      pattern: /api/v1/users/login
+      stateless: true
+      anonymous: true
+      provider: user_provider
+      json_login:
+        check_path: /api/v1/users/login_check
+        success_handler: lexik_jwt_authentication.handler.authentication_success
+        failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        require_previous_session: false
+    api:
+      pattern: ^/api/v1
+      stateless: true
+      guard:
+        authenticators:
+          - lexik_jwt_authentication.jwt_token_authenticator
 
-    access_control:
-        - { path: ^/api/v1, roles: IS_AUTHENTICATED_FULLY }
+  access_control:
+    - { path: ^/api/v1, roles: IS_AUTHENTICATED_FULLY }
