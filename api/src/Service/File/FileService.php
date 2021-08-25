@@ -30,7 +30,7 @@ class FileService
         $this->mediaPath      = $mediaPath;
     }
 
-    
+
     public function uploadFile(UploadedFile $file, string $prefix): string
     {
         $fileName = \sprintf('%s/%s.%s', $prefix, \sha1(\uniqid()), $file->guessExtension());
@@ -71,8 +71,7 @@ class FileService
     {
         try {
             if ($path !== null) {
-                $this->defaultStorage->delete(\explode($this->mediaPath, $path)[1]);
-                //$this->defaultStorage->delete($path);
+                $this->defaultStorage->delete($path);
             }
         } catch (\Exception $e) {
             $this->logger->warning(
