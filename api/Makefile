@@ -43,6 +43,9 @@ restart: ## Restart the containers
 prepare: ## Runs backend commands
 	$(MAKE) composer-install
 
+containers-list:
+	docker ps
+
 # Backend commands
 composer-install: ## Installs composer dependencies
 	U_ID=${UID} docker exec --user ${UID} -it ${DOCKER_BE} composer install --no-scripts --no-interaction --optimize-autoloader
