@@ -9,7 +9,7 @@ App\Entity\User:
       path: /users/register
       controller: App\Api\Action\User\Register
       denormalization_context:
-        groups: [ user_post ]
+        groups: [ user_register ]
       openapi_context:
         summary: Register a new user
     resend_activation_email:
