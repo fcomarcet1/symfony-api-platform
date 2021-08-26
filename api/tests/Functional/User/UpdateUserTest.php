@@ -29,11 +29,12 @@ class UpdateUserTest extends UserTestBase
 
         // Check response 200 OK
         $this->assertEquals(JsonResponse::HTTP_OK, $response->getStatusCode());
-        // Check name same sent and response
+        // Check name -> name = new name
         $this->assertEquals($payload['name'], $responseData['name']);
     }
 
 
+    // Try to modify name form another user
     public function testUpdateAnotherUser(): void
     {
         $payload = ['name' => 'Peter New'];

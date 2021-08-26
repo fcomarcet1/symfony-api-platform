@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
-use Symfony\Contracts\EventDispatcher\Event;
 
 class User implements UserInterface
 {
@@ -20,7 +21,7 @@ class User implements UserInterface
     private bool $active;
     private \DateTime $createdAt;
     private \DateTime $updatedAt;
-    private array $domainEvents;
+    private Collection $groups;
 
     public function __construct(string $name, string $email)
     {
@@ -34,44 +35,28 @@ class User implements UserInterface
         $this->active             = false;
         $this->createdAt          = new \DateTime();
         $this->markAsUpdated();
-
+        $this->groups = new ArrayCollection();
     }
-
-
-    public function addDomainEvent(Event $event): void
-    {
-        $this->domainEvents[] = $event;
-    }
-
-    public function pullDomainEvents(): array
-    {
-        return $this->domainEvents;
-    }
-
 
     public function getId(): string
     {
         return $this->id;
     }
 
-
     public function getName(): string
     {
         return $this->name;
     }
-
 
     public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-
     public function getEmail(): string
     {
         return $this->email;
     }
-
 
     public function setEmail(string $email): void
     {
@@ -82,85 +67,71 @@ class User implements UserInterface
         $this->email = $email;
     }
 
-
     public function getPassword(): ?string
     {
         return $this->password;
     }
-
 
     public function setPassword(?string $password): void
     {
         $this->password = $password;
     }
 
-
     public function getAvatar(): ?string
     {
         return $this->avatar;
     }
-
 
     public function setAvatar(?string $avatar): void
     {
         $this->avatar = $avatar;
     }
 
-
     public function getToken(): ?string
     {
         return $this->token;
     }
-
 
     public function setToken(?string $token): void
     {
         $this->token = $token;
     }
 
-
     public function getResetPasswordToken(): ?string
     {
         return $this->resetPasswordToken;
     }
-
 
     public function setResetPasswordToken(?string $resetPasswordToken): void
     {
         $this->resetPasswordToken = $resetPasswordToken;
     }
 
-
     public function isActive(): bool
     {
         return $this->active;
     }
-
 
     public function setActive(bool $active): void
     {
         $this->active = $active;
     }
 
-
     public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
-
 
     public function getUpdatedAt(): \DateTime
     {
         return $this->updatedAt;
     }
 
-
-    public function markAsUpdated()
+    public function markAsUpdated(): void
     {
         $this->updatedAt = new \DateTime();
     }
 
-    // INTERFACE METHODS
     public function getRoles(): array
     {
         return [];
@@ -168,7 +139,6 @@ class User implements UserInterface
 
     public function getSalt(): void
     {
-
     }
 
     public function getUsername(): string
@@ -178,12 +148,39 @@ class User implements UserInterface
 
     public function eraseCredentials(): void
     {
-
     }
 
-    // For User Voter compare if user get same id
     public function equals(User $user): bool
     {
         return $this->id === $user->getId();
+    }
+
+    /**
+     * @return Collection|Group[]
+     */
+    public function getGroups(): Collection
+    {
+        return $this->groups;
+    }
+
+    public function addGroup(Group $group): void
+    {
+        if ($this->groups->contains($group)) {
+            return;
+        }
+
+        $this->groups->add($group);
+    }
+
+    public function removeGroup(Group $group): void
+    {
+        if ($this->groups->contains($group)) {
+            $this->groups->removeElement($group);
+        }
+    }
+
+    public function isMemberOfGroup(Group $group): bool
+    {
+        return $this->groups->contains($group);
     }
 }
