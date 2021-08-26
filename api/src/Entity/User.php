@@ -24,20 +24,20 @@ class User implements UserInterface
 
     public function __construct(string $name, string $email)
     {
-        $this->id = Uuid::v4()->toRfc4122();
+        $this->id   = Uuid::v4()->toRfc4122();
         $this->name = $name;
         $this->setEmail($email);
-        $this->password = null;
-        $this->avatar = null;
-        $this->token = \sha1(\uniqid());
+        $this->password           = null;
+        $this->avatar             = null;
+        $this->token              = \sha1(\uniqid());
         $this->resetPasswordToken = null;
-        $this->active = false;
-        $this->createdAt = new \DateTime();
+        $this->active             = false;
+        $this->createdAt          = new \DateTime();
         $this->markAsUpdated();
 
     }
 
-    
+
     public function addDomainEvent(Event $event): void
     {
         $this->domainEvents[] = $event;
@@ -149,7 +149,6 @@ class User implements UserInterface
     }
 
 
-    
     public function getUpdatedAt(): \DateTime
     {
         return $this->updatedAt;
@@ -180,5 +179,11 @@ class User implements UserInterface
     public function eraseCredentials(): void
     {
 
+    }
+
+    // For User Voter compare if user get same id
+    public function equals(User $user): bool
+    {
+        return $this->id === $user->getId();
     }
 }

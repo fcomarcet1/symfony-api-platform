@@ -8,6 +8,7 @@ use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Facebook\FacebookResponse;
 
+// Class for Undock facebook client
 class FacebookClient
 {
     private Facebook $client;
@@ -15,11 +16,8 @@ class FacebookClient
     /**
      * @throws FacebookSDKException
      */
-    public function __construct(
-        string $facebookClientId,
-        string $facebookSecret,
-        string $facebookGraphVersion
-    ) {
+    public function __construct(string $facebookClientId, string $facebookSecret, string $facebookGraphVersion)
+    {
         $this->client = new Facebook([
             'app_id'                => $facebookClientId,
             'app_secret'            => $facebookSecret,

@@ -2,6 +2,7 @@ App\Entity\User:
   attributes:
     normalization_context:
       groups: [ user_read ]
+
   collectionOperations:
     register:
       method: POST
@@ -11,7 +12,6 @@ App\Entity\User:
         groups: [ user_post ]
       openapi_context:
         summary: Register a new user
-
     resend_activation_email:
       method: POST
       path: /users/resend_activation_email
@@ -38,7 +38,6 @@ App\Entity\User:
                   properties:
                     message:
                       type: string
-
     login:
       method: POST
       route_name: api_login_check
@@ -68,7 +67,6 @@ App\Entity\User:
                   properties:
                     token:
                       type: string
-
     request_reset_password:
       method: POST
       path: /users/request_reset_password
@@ -95,7 +93,6 @@ App\Entity\User:
                   properties:
                     message:
                       type: string
-
     change_password:
       method: POST
       path: /users/change_password
@@ -132,7 +129,6 @@ App\Entity\User:
                   avatar:
                     type: string
                     format: binary
-
     facebook_auth:
       method: POST
       path: /users/facebook/auth
@@ -163,6 +159,16 @@ App\Entity\User:
   itemOperations:
     get:
       method: GET
+      security: is_granted("USER_READ", object)
+    put:
+      method: PUT
+      security: is_granted("USER_UPDATE", object)
+      denormalization_context:
+        groups: [ user_update ]
+    delete:
+      method: DELETE
+      security: is_granted("USER_DELETE", object)
+
     activate:
       method: PUT
       path: /users/activate/{id}
@@ -172,7 +178,6 @@ App\Entity\User:
         groups: [ user_activate ]
       openapi_context:
         summary: Activates a user account
-
     reset_password:
       method: PUT
       path: /users/{id}/reset_password
@@ -199,7 +204,6 @@ App\Entity\User:
               application/ld+json:
                 schema:
                   $ref: '#/components/schemas/User:jsonld-user_read'
-
     change_password:
       method: PUT
       path: /users/{id}/change_password
