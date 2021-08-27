@@ -2,7 +2,6 @@ App\Entity\User:
   attributes:
     normalization_context:
       groups: [ user_read ]
-
   collectionOperations:
     register:
       method: POST
@@ -43,7 +42,6 @@ App\Entity\User:
       route_name: api_login_check
       openapi_context:
         summary: Login a user in the API
-        description: In field Username use your registered email.
         requestBody:
           content:
             application/json:
@@ -54,9 +52,6 @@ App\Entity\User:
                     type: string
                   password:
                     type: string
-                example:
-                  username: frank@api.com
-                  password: password
         responses:
           200:
             description: OK
@@ -93,26 +88,6 @@ App\Entity\User:
                   properties:
                     message:
                       type: string
-    change_password:
-      method: POST
-      path: /users/change_password
-      controller: App\Api\Action\User\ChangePassword
-      deserialize: false
-      openapi_context:
-        summary: Changes user password
-        description: Require user logged.
-        requestBody:
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  oldPassword:
-                    type: string
-                    required: true
-                  newPassword:
-                    type: string
-                    required: true
     upload_avatar:
       method: POST
       path: /users/{id}/avatar
@@ -155,7 +130,6 @@ App\Entity\User:
                   properties:
                     token:
                       type: string
-
   itemOperations:
     get:
       method: GET
@@ -168,16 +142,15 @@ App\Entity\User:
     delete:
       method: DELETE
       security: is_granted("USER_DELETE", object)
-
     activate:
       method: PUT
-      path: /users/activate/{id}
+      path: /users/{id}/activate
       controller: App\Api\Action\User\ActivateAccount
       deserialize: false
       denormalization_context:
         groups: [ user_activate ]
       openapi_context:
-        summary: Activates a user account
+        summary: Activates a user
     reset_password:
       method: PUT
       path: /users/{id}/reset_password
@@ -210,7 +183,7 @@ App\Entity\User:
       controller: App\Api\Action\User\ChangePassword
       deserialize: false
       openapi_context:
-        summary: Changes logged user password
+        summary: Changes user password
         requestBody:
           content:
             application/json:
@@ -223,4 +196,9 @@ App\Entity\User:
                   newPassword:
                     type: string
                     required: true
-
+  properties:
+    groups:
+      subresource:
+        resourceClass: App\Entity\Group
+        collection: true
+        maxDepth: 1
