@@ -4,20 +4,22 @@ Simple overview of use/purpose.
 
 ## Description
 
-API REST empleando api-platform. Esta API nos permitirá gestionar nuestras finanzas personales.
+API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar nuestras finanzas personales.
 
-- Send activation email -> RabbitMQ
-- Resend activation email
-- JWT Auth (JWT LexikJWTAuthenticationBundle).
-- Reset password
 - Documentation **Api-Platform**.
-- Upload user avatar Amazon S3/Digital Ocean Cloud
-- Testing.
+- Complete Authentication:
+  - Send activation email -> RabbitMQ.
+  - OAuth facebook login.
+  - Resend activation email.
+  - JWT Auth (JWT LexikJWTAuthenticationBundle).
+  - Reset password
+- Upload user avatar Amazon S3/Digital Ocean Cloud.
+- CRUD Groups
+- Tests.
+
 
 - IN PROGRESS:
     - CRUD movements.
-    - groups
-    - OAuth facebook login
     - Categories
     - Upload movements file
    
@@ -32,7 +34,8 @@ API REST empleando api-platform. Esta API nos permitirá gestionar nuestras fina
 5. Ejecuta `make composer-install` en la raíz del proyecto.
 6. Instala las migraciones de base de datos: `make migrations`.
 7. Accede el servidor local de desarrollo para comprobar que funciona correctamente: `http://localhost:250`.
-8. Happy codding!
+8. Documentacion de la API: `http://localhost:250/api/v1/docs`
+9. Happy codding!
 
 
 ## Authors
