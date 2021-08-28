@@ -31,7 +31,7 @@ class TestBase extends WebTestCase
             self::$client = static::createClient();
             self::$client->setServerParameters([
                     'CONTENT_TYPE' => 'application/json',
-                    'HTTP_ACCEPT' => 'application/ld+json',
+                    'HTTP_ACCEPT'  => 'application/ld+json',
                 ]
             );
         }
@@ -68,8 +68,8 @@ class TestBase extends WebTestCase
         $client->setServerParameters(
             [
                 'HTTP_Authorization' => \sprintf('Bearer %s', $token),
-                'CONTENT_TYPE' => 'application/json',
-                'HTTP_ACCEPT' => 'application/ld+json',
+                'CONTENT_TYPE'       => 'application/json',
+                'HTTP_ACCEPT'        => 'application/ld+json',
             ]
         );
     }
@@ -104,11 +104,39 @@ class TestBase extends WebTestCase
      * @throws DBALException
      * @throws Exception
      */
+    protected function getPeterGroupId()
+    {
+        return $this
+            ->initDbConnection()
+            ->executeQuery('SELECT id FROM user_group WHERE name = "Peter Group"')
+            ->fetchOne();
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     * @throws Exception
+     */
     protected function getBrianId()
     {
         return $this
             ->initDbConnection()
             ->executeQuery('SELECT id FROM user WHERE email = "brian@api.com"')
+            ->fetchOne();
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     * @throws Exception
+     */
+    protected function getBrianGroupId()
+    {
+        return $this
+            ->initDbConnection()
+            ->executeQuery('SELECT id FROM user_group WHERE name = "Brian Group"')
             ->fetchOne();
     }
 }
