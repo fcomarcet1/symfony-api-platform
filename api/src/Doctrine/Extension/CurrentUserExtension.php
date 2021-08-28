@@ -33,7 +33,7 @@ class CurrentUserExtension implements QueryCollectionExtensionInterface
     private function addWhere(QueryBuilder $qb, string $resourceClass): void
     {
         /**
-         * Get user from token if exists else null
+         * Get user from token
          *
          * @var User|null $user
          */

@@ -19,16 +19,17 @@ class Group
 
     public function __construct(string $name, User $owner)
     {
-        $this->id        = Uuid::v4()->toRfc4122();
-        $this->name      = $name;
-        $this->owner     = $owner;
-        $this->users     = new ArrayCollection([$owner]);
+        $this->id    = Uuid::v4()->toRfc4122();
+        $this->name  = $name;
+        $this->owner = $owner;
+        // Add the owner as 1st member of the group
+        $this->users = new ArrayCollection([$owner]);
+        $owner->addGroup($this);
         $this->createdAt = new \DateTime();
         $this->markAsUpdated();
-        $owner->addGroup($this);
 
     }
-    
+
     public function getId(): string
     {
         return $this->id;
