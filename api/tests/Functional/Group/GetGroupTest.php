@@ -38,7 +38,7 @@ class GetGroupTest extends GroupTestBase
         // get Peter Group Id
         $peterGroupId = $this->getPeterGroupId();
 
-        // request from peter to get Peter Group detail
+        // request from peter with brian ID to get Peter Group detail
         self::$brian->request(
             'GET',
             \sprintf('%s/%s', $this->endpoint, $peterGroupId)
