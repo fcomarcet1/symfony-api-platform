@@ -1,6 +1,6 @@
-# 📖 My Finance. API REST con SYMFONY 5
+# 📖 My Finance. API REST con SYMFONY 5 && API PLATFORM.
 
-Simple overview of use/purpose.
+
 
 ## Description
 
