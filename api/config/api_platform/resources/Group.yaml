@@ -8,26 +8,21 @@ App\Entity\Group:
       security: is_granted("GROUP_CREATE")
       denormalization_context:
         groups: [ group_create ]
-      openapi_context:
-        summary: Create new Group.
   itemOperations:
     get:
       method: GET
       security: is_granted("GROUP_READ", object)
-      openapi_context:
-        summary: Get Group detail.
+
     put:
       method: PUT
       security: is_granted("GROUP_UPDATE", object)
       denormalization_context:
         groups: [ group_update ]
-      openapi_context:
-        summary: Update Group.
+
     delete:
       method: DELETE
       security: is_granted("GROUP_DELETE", object)
-      openapi_context:
-        summary: Delete Group.
+     
   properties:
     users:
       subresource:

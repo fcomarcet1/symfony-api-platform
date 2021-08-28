@@ -14,7 +14,7 @@ class GroupVoter extends Voter
     public const GROUP_READ = 'GROUP_READ';
     public const GROUP_UPDATE = 'GROUP_UPDATE';
     public const GROUP_DELETE = 'GROUP_DELETE';
-    //public const GROUP_CREATE = 'GROUP_CREATE';
+    public const GROUP_CREATE = 'GROUP_CREATE';
 
 
     // En este metodo indicamos attrs a soportar, si el atributo esta en el array -> true
@@ -33,10 +33,14 @@ class GroupVoter extends Voter
      */
     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
     {
-        if (\in_array($attribute, $this->supportedAttributes(), true)) {
-            return $subject->isOwnerBy($token->getUser());
+        // Return true because knows user is logged.
+        if ($attribute === self::GROUP_CREATE) {
+            return true;
         }
-
+        // For read, update & delete check if user is logged and is owner else return false
+        if (\in_array($attribute, [self::GROUP_READ, self::GROUP_UPDATE, self::GROUP_DELETE], true)) {
+            return $subject->isOwnedBy($token->getUser());
+        }
         return false;
     }
 
@@ -46,7 +50,7 @@ class GroupVoter extends Voter
             self::GROUP_READ,
             self::GROUP_UPDATE,
             self::GROUP_DELETE,
-            //self::GROUP_CREATE,
+            self::GROUP_CREATE,
         ];
     }
 }

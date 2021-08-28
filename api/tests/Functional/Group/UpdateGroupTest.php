@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UpdateGroupTest extends GroupTestBase
 {
+
+
     // Happy path case
     public function testUpdateGroup(): void
     {
@@ -50,6 +52,6 @@ class UpdateGroupTest extends GroupTestBase
 
         $this->assertEquals(JsonResponse::HTTP_FORBIDDEN, $response->getStatusCode());
     }
-    
+
 }
 

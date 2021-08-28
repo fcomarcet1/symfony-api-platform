@@ -113,7 +113,7 @@ class Group
      * Check if user is a group owner
      * A user will be the owner of the group if he created it himself.
      */
-    public function isOwnerBy(User $user): bool
+    public function isOwnedBy(User $user): bool
     {
         return $this->owner->getId() === $user->getId();
     }
