@@ -50,5 +50,6 @@ class UpdateGroupTest extends GroupTestBase
 
         $this->assertEquals(JsonResponse::HTTP_FORBIDDEN, $response->getStatusCode());
     }
+    
 }
 
