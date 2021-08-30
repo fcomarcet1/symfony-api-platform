@@ -56,6 +56,9 @@ migrations: ## Runs the migrations
 cache-clear:
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console cache:clear
 
+cache-clear-test:
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console cache:clear --env=test
+
 be-logs: ## Tails the Symfony dev log
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} tail -f var/log/dev.log
 
