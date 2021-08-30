@@ -34,39 +34,15 @@ class GroupRequest
         return $this->id;
     }
 
-
     public function getGroup(): Group
     {
         return $this->group;
     }
 
-    public function setGroup(Group $group): void
-    {
-        $this->group = $group;
-    }
-
-
     public function getUser(): User
     {
         return $this->user;
     }
-
-    public function setUser(User $user): void
-    {
-        $this->user = $user;
-    }
-
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
-    }
-
 
     public function getToken(): string
     {
@@ -78,21 +54,24 @@ class GroupRequest
         $this->token = $token;
     }
 
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
 
     public function getAcceptedAt(): ?\DateTime
     {
         return $this->acceptedAt;
     }
 
-
     public function setAcceptedAt(?\DateTime $acceptedAt): void
     {
         $this->acceptedAt = $acceptedAt;
     }
-
-
-
-
-
 
 }

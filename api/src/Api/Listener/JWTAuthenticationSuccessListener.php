@@ -11,7 +11,7 @@ class JWTAuthenticationSuccessListener
     {
         $data = [
             'code' => 200,
-            'message' => 'authentication successfull',
+            'message' => 'authentication successful',
             'data' => $event->getData(),
         ];
         $event->setData($data);
