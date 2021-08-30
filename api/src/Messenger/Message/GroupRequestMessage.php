@@ -6,7 +6,7 @@ namespace App\Messenger\Message;
 class GroupRequestMessage
 {
     private string $groupId;
-    private string $userId;
+    private string $userId; //id from receiver.
     private string $token;
     private string $requesterName; //Needed for create email
     private string $groupName;

@@ -43,8 +43,7 @@ class RequestResetPasswordService
         $this->userRepository->save($user);
 
         // Send message to rabbitmq
-
-        $message = $this->messageBus->dispatch(
+        $this->messageBus->dispatch(
             new RequestResetPasswordMessage(
                 $user->getId(),
                 $user->getEmail(),
