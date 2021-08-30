@@ -10,7 +10,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 class SendRequestToUserService
 {
-
     private UserRepository $userRepository;
     private GroupRepository $groupRepository;
     private GroupRequestRepository $groupRequestRepository;
@@ -21,8 +20,7 @@ class SendRequestToUserService
         GroupRepository $groupRepository,
         GroupRequestRepository $groupRequestRepository,
         MessageBusInterface $messageBus
-    )
-    {
+    ) {
         $this->userRepository = $userRepository;
         $this->groupRepository = $groupRepository;
         $this->groupRequestRepository = $groupRequestRepository;

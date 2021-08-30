@@ -8,5 +8,6 @@ abstract class RoutingKey
 {
     // Set queue
     public const USER_QUEUE = 'user_queue';
+    public const GROUP_QUEUE = 'group_queue';
 
 }

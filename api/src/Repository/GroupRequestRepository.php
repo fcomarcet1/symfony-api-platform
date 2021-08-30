@@ -25,6 +25,13 @@ class GroupRequestRepository extends BaseRepository
         string $token
     ) :GroupRequest
     {
+
+
+        /**
+         * No hay problema en meter un string en el campo group aunque en nuestro modelo
+         * ser ade tipo Group la propiedad, doctrine sabe interpretarlo y transformar
+         * internamente y obtendremos el mismo resultado.
+         */
         $groupRequest = $this->objectRepository->findOneBy([
             'user' => $userId,
             'group' => $groupId,

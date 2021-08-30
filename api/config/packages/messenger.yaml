@@ -7,7 +7,8 @@ framework:
                 context: { }
 
         transports:
-            # Add new transport -> amqp_user
+            # Add new transport.
+            # Transport for user auth
             amqp_user:
                 dsn: '%env(string:MESSENGER_TRANSPORT_DSN)%'
                 options:
@@ -19,8 +20,21 @@ framework:
                         user_queue:
                             binding_keys: [ user_queue ]
                     auto_setup: true
+            # Transport for groups
+            amqp_group:
+                dsn: '%env(string:MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    vhost: '%env(string:MESSENGER_VHOST)%'
+                    exchange:
+                        name: '%env(string:MESSENGER_EXCHANGE)%'
+                        type: direct
+                    queues:
+                        group_queue:
+                            binding_keys: [ group_queue ]
+                    auto_setup: true
 
         routing:
             'App\Messenger\Message\UserRegisteredMessage': amqp_user
             'App\Messenger\Message\RequestResetPasswordMessage': amqp_user
+            'App\Messenger\Message\GroupRequestMessage': amqp_group
 

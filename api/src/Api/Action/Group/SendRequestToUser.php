@@ -25,7 +25,7 @@ class SendRequestToUser
 
     /**
      * @param Request $request
-     * @param string $id idGroup
+     * @param string $id idGroup from request
      * @param User $user
      * @return JsonResponse
      */
@@ -38,7 +38,7 @@ class SendRequestToUser
         );
 
         return new JsonResponse([
-            'message' => 'The request has been sent to invite to group!'
+            'message' => 'The (email) request has been sent to invite to group!'
         ]);
     }
 }
