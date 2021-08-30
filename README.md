@@ -18,10 +18,12 @@ API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar n
 - Tests.
 
 
-- IN PROGRESS:
+- IN PROGRESS: 
+    - Groups management(Invite another users to groups).
     - CRUD movements.
     - Categories
     - Upload movements file
+    - Reset Token
    
 
 
@@ -31,11 +33,11 @@ API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar n
 2. Ejecuta `cd ~/symfony-api-platform/api` && `make run` para levantar los contenedores(nginx + php8.0 + MySQL8)
 3. Ejecuta `cd ~/symfony-api-platform/mailer` && `make run` para levantar Mailer Service
 4. Ejecuta `cd ~/symfony-api-platform/rabbitmq` && `make run` para levantar RabbitMQ Service
-5. Ejecuta `make composer-install` en la raíz del proyecto.
+5. Ejecuta `make composer-install` en la raíz del proyecto para instalar las dependencias.
 6. Instala las migraciones de base de datos: `make migrations`.
 7. Accede el servidor local de desarrollo para comprobar que funciona correctamente: `http://localhost:250`.
 8. Documentacion de la API: `http://localhost:250/api/v1/docs`
-9. Happy codding!
+9. Happy codding my friends!
 
 
 ## Authors
