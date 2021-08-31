@@ -15,9 +15,11 @@ use Twig\Environment;
 class MailerService
 {
 
+    // Subject for email
     private const TEMPLATE_SUBJECT_MAP = [
-        TwigTemplate::USER_REGISTER => 'Bienvenid@ a my Finance App!',
-        TwigTemplate::RESET_PASSWORD => 'Restablecer contraseña'
+        TwigTemplate::USER_REGISTER => 'Bienvenid@ a my Finance App!.',
+        TwigTemplate::RESET_PASSWORD => 'Restablecer contraseña en My finance App.',
+        TwigTemplate::GROUP_REQUEST => 'Invitación a grupo desde My finance App.',
     ];
 
     private MailerInterface $mailer;
