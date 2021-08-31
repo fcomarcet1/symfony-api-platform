@@ -27,7 +27,7 @@ class JWTCreatedListener
 
         $payload = $event->getData();
         $payload['userId'] = $user->getId();
-        $payload['ip'] = $request->getClientIp();
+        //$payload['ip'] = $request->getClientIp();
         unset($payload['roles']);
 
         $event->setData($payload);
