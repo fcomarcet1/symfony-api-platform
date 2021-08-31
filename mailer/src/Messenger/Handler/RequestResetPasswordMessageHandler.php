@@ -11,7 +11,7 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 class RequestResetPasswordMessageHandler implements MessageHandlerInterface
 {
     private MailerService $mailerService;
-    private string $host;
+    private string $host; // frontend URL
 
     public function __construct(MailerService $mailerService, string $host)
     {

@@ -12,7 +12,7 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 class UserRegisteredMessageHandler implements MessageHandlerInterface
 {
     private MailerService $mailerService;
-    private string $host;
+    private string $host; // frontend URL
 
     public function __construct(MailerService $mailerService, string $host)
     {
