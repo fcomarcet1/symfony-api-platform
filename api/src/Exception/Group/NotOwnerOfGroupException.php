@@ -10,6 +10,6 @@ class NotOwnerOfGroupException extends AccessDeniedHttpException
 
     public function __construct()
     {
-        parent::__construct('You cannot invite if are not owner of this group');
+        parent::__construct('You cannot invite others members if are not owner of this group');
     }
 }

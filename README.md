@@ -1,7 +1,6 @@
 # 📖 My Finance. API REST con SYMFONY 5 && API PLATFORM.
 
 
-
 ## Description
 
 API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar nuestras finanzas personales.
@@ -9,8 +8,8 @@ API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar n
 - Documentation **Api-Platform**.
 - Complete Authentication:
   - Send activation email -> RabbitMQ.
+  - Resend activation email -> RabbitMQ.
   - OAuth facebook login.
-  - Resend activation email.
   - JWT Auth (JWT LexikJWTAuthenticationBundle).
   - Reset password
 - Upload user avatar Amazon S3/Digital Ocean Cloud.
