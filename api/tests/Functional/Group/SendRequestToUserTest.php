@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SendRequestToUserTest extends GroupTestBase
 {
+    // Message expected:
     public const MESSAGE_EXPECTED_SEND_REQUEST_USER = 'The (email) request has been sent to invite to group!';
     public const MESSAGE_EXCEPTION_NOT_OWNER_OF_GROUP = 'You cannot invite others members if are not owner of this group';
     public const MESSAGE_EXCEPTION_USER_ALREADY_MEMBER = 'This user is already member of the group';
@@ -15,7 +16,6 @@ class SendRequestToUserTest extends GroupTestBase
     // Happy path case
     public function testSendRequestToUser(): void
     {
-
         $payload = ['email' => 'roger@api.com'];
 
         self::$peter->request(
