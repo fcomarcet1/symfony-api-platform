@@ -1,0 +1,6 @@
+App\Entity\GroupRequest:
+  GroupRequest-0:
+    __construct:
+      group: '@Group-0' # Peter group
+      user: '@User-1' # Brian
+    token: '234567'
