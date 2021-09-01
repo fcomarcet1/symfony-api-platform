@@ -59,7 +59,6 @@ App\Entity\Group:
               schema:
                 type: object
                 properties:
-                  # don't need groupId here because url contains groupId
                   userId:
                     type: string
                     required: true

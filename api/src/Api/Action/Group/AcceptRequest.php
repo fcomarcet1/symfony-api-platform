@@ -19,7 +19,11 @@ class AcceptRequest
         $this->acceptRequestService = $acceptRequestService;
     }
 
-    // api/v1/groups/{id}/accept_request
+    /**
+     *  api/v1/groups/{id}/accept_request
+     *
+     * @throws \Throwable
+     */
     public function __invoke(Request $request, string $id): JsonResponse
     {
         // Call AcceptRequestService(groupId, userId, Token)
