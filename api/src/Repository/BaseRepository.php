@@ -22,17 +22,31 @@ abstract class BaseRepository
 
     public function __construct(ManagerRegistry $managerRegistry, Connection $connection)
     {
-        $this->managerRegistry = $managerRegistry;
-        $this->connection = $connection;
+        $this->managerRegistry  = $managerRegistry;
+        $this->connection       = $connection;
         $this->objectRepository = $this->getEntityManager()->getRepository($this->entityClass());
     }
 
     abstract protected static function entityClass(): string;
 
     /**
+     * @return ObjectManager|EntityManager
+     */
+    public function getEntityManager()
+    {
+        $entityManager = $this->managerRegistry->getManager();
+
+        if ($entityManager->isOpen()) {
+            return $entityManager;
+        }
+
+        return $this->managerRegistry->resetManager();
+    }
+
+    /**
      * @throws ORMException
      */
-    public function persistEntity(object $entity): void
+    protected function persistEntity(object $entity): void
     {
         $this->getEntityManager()->persist($entity);
     }
@@ -42,7 +56,7 @@ abstract class BaseRepository
      * @throws OptimisticLockException
      * @throws MappingException
      */
-    public function flushData(): void
+    protected function flushData(): void
     {
         $this->getEntityManager()->flush();
         $this->getEntityManager()->clear();
@@ -52,7 +66,7 @@ abstract class BaseRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function saveEntity(object $entity)
+    protected function saveEntity(object $entity)
     {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
@@ -62,7 +76,7 @@ abstract class BaseRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function removeEntity(object $entity)
+    protected function removeEntity(object $entity)
     {
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
@@ -72,7 +86,7 @@ abstract class BaseRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function refreshEntity(object $entity)
+    protected function refreshEntity(object $entity)
     {
         $this->getEntityManager()->refresh($entity);
     }
@@ -93,17 +107,5 @@ abstract class BaseRepository
         $this->connection->executeQuery($query, $params);
     }
 
-    /**
-     * @return ObjectManager|EntityManager
-     */
-    private function getEntityManager()
-    {
-        $entityManager = $this->managerRegistry->getManager();
 
-        if ($entityManager->isOpen()) {
-            return $entityManager;
-        }
-
-        return $this->managerRegistry->resetManager();
-    }
 }
