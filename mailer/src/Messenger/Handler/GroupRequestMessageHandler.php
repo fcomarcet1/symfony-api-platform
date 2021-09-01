@@ -27,7 +27,7 @@ class GroupRequestMessageHandler implements MessageHandlerInterface
     {
         /**
          * Create payload for send message
-         */ http://localhost:3000/activate_account?token=8g9sg098bsf&uid=5fs3v-sd54sa-aalkjf
+         */ http://localhost:3000/group_request?&groupId=8a762539-d76b-4ff3-ad5e-0b70506a3a88&userId=0&token=918c270550542ef932e0c796d24594d2e1268d4b
         $payload = [
             'requesterName' => $message->getRequesterName(),
             'groupName' =>$message->getGroupName(),

@@ -42,7 +42,7 @@ class MailerService
     /**
      * @throws \Exception
      */
-    // param array $payload tendra los 2 valores del template [name, url]
+    // param array $payload tendra los  valores del template necesarios
     public function sendEmail(string $receiver, string $template, array $payload)
     {
         // Create email with subject data and template

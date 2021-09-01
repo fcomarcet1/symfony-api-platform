@@ -46,7 +46,36 @@ App\Entity\Group:
                   properties:
                     message:
                       type: string
-     
+    accept_request:
+      method: PUT
+      path: /groups/{id}/accept_request
+      controller: App\Api\Action\Group\AcceptRequest
+      deserialize: false
+      openapi_context:
+        summary: Add a user to a group.
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  # don't need groupId here because url contains groupId
+                  userId:
+                    type: string
+                    required: true
+                  token:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
   properties:
     users:
       subresource:
