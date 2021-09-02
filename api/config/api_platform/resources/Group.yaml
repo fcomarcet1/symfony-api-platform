@@ -75,6 +75,32 @@ App\Entity\Group:
                   properties:
                     message:
                       type: string
+    remove_user:
+      method: DELETE
+      path: /groups/{id}/remove_user
+      controller: App\Api\Action\Group\RemoveUser
+      deserialize: false
+      openapi_context:
+        summary: Remove a user from a group.
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
   properties:
     users:
       subresource:

@@ -44,7 +44,7 @@ class AcceptRequestService
                 // set data
                 $groupRequest->setStatus(GroupRequest::ACCEPTED);
                 $groupRequest->setAcceptedAt(new \DateTime());
-                
+
                 // persist data
                 $em->persist($groupRequest);
 
@@ -58,5 +58,28 @@ class AcceptRequestService
                 $em->persist($group);
             }
         );
+
+        /*
+         * If DeleteGroupTest fails because entityManager is close, extract all we can
+         * do exceptions from transaction(only persist data inside)
+        $groupRequest = $this->groupRequestRepository->findOnePendingByGroupIdUserIdAndTokenOrFail(
+            $groupId,
+            $userId,
+            $token
+        );
+        $groupRequest->setStatus(GroupRequest::ACCEPTED);
+        $groupRequest->setAcceptedAt(new \DateTime());
+
+        $user = $this->userRepository->findOneByIdOrFail($userId);
+        $group = $this->groupRepository->findOneByIdOrFail($groupId);
+        $group->addUser($user);
+        $user->addGroup($group);
+
+        $this->groupRequestRepository->getEntityManager()->transactional(
+            function (EntityManagerInterface $em) use ($groupRequest, $group) {
+                $em->persist($groupRequest);
+                $em->persist($group);
+            }
+        );*/
     }
 }
