@@ -19,8 +19,11 @@ class RemoveUser
         $this->removeUserService = $removeUserService;
     }
 
-    // endpoint /groups/{id}/remove_user
-    // id -> groupId
+    /**
+     * endpoint /groups/{id}/remove_user   [id -> groupId]
+     *
+     * @throws \Throwable
+     */
     public function __invoke(string $id, Request $request, User $user): JsonResponse
     {
         // Call service
