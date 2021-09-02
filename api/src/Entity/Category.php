@@ -8,8 +8,8 @@ use Symfony\Component\Uid\Uuid;
 
 class Category
 {
-    public const EXPENSE = 'expense';
-    public const INCOME = 'income';
+    public const EXPENSE = 'expense'; // gastos
+    public const INCOME = 'income';   // ingresos
 
     private string $id;
     private string $name;
