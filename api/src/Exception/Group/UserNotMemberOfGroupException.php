@@ -10,7 +10,7 @@ class UserNotMemberOfGroupException extends AccessDeniedHttpException
 
     public function __construct()
     {
-        parent::__construct('This user is not member of this group');
+        parent::__construct('This user is not member of this group.');
     }
 
 }
