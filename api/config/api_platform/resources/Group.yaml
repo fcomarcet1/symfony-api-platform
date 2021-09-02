@@ -76,7 +76,7 @@ App\Entity\Group:
                     message:
                       type: string
     remove_user:
-      method: DELETE
+      method: PUT
       path: /groups/{id}/remove_user
       controller: App\Api\Action\Group\RemoveUser
       deserialize: false
