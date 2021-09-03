@@ -76,6 +76,7 @@ class Category
         $this->updatedAt = new \DateTime();
     }
 
+    // Check if category is owned by logged user
     public function isOwnedBy(User $user): bool
     {
         return $this->owner->getId() === $user->getId();
