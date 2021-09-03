@@ -19,6 +19,7 @@ class Category
     private \DateTime $createdAt;
     private \DateTime $updatedAt;
 
+    // Set $group = null need for api-platform for don't need to add group when user create a new category
     public function __construct(string $name, string $type, User $owner, Group $group = null)
     {
         $this->id        = Uuid::v4()->toRfc4122();
