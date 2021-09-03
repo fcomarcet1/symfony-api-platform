@@ -116,6 +116,26 @@ class TestBase extends WebTestCase
      * @return false|mixed
      *
      * @throws DBALException
+     */
+    protected function getPeterExpenseCategoryId()
+    {
+        return $this->initDbConnection()->query('SELECT id FROM category WHERE name = "Peter Expense Category"')->fetchColumn(0);
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     */
+    protected function getPeterGroupExpenseCategoryId()
+    {
+        return $this->initDbConnection()->query('SELECT id FROM category WHERE name = "Peter Group Expense Category"')->fetchColumn(0);
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
      * @throws Exception
      */
     protected function getBrianId()
@@ -137,6 +157,34 @@ class TestBase extends WebTestCase
         return $this
             ->initDbConnection()
             ->executeQuery('SELECT id FROM user_group WHERE name = "Brian Group"')
+            ->fetchOne();
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     * @throws Exception
+     */
+    protected function getBrianExpenseCategoryId()
+    {
+        return $this
+            ->initDbConnection()
+            ->executeQuery('SELECT id FROM category WHERE name = "Brian Expense Category"')
+            ->fetchOne();
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     * @throws Exception
+     */
+    protected function getBrianGroupExpenseCategoryId()
+    {
+        return $this
+            ->initDbConnection()
+            ->executeQuery('SELECT id FROM category WHERE name = "Brian Group Expense Category"')
             ->fetchOne();
     }
 }
