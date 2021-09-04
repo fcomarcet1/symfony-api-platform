@@ -81,4 +81,14 @@ class Category
     {
         return $this->owner->getId() === $user->getId();
     }
+
+    // Check if category belongs to a group
+    public function belongsToGroup(Group $group): bool
+    {
+        if (null !== $group = $this->group) {
+            return $group->getId() === $group->getId();
+        }
+
+        return false;
+    }
 }
