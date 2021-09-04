@@ -138,6 +138,34 @@ class TestBase extends WebTestCase
      * @throws DBALException
      * @throws Exception
      */
+    protected function getPeterMovementId()
+    {
+        return $this
+            ->initDbConnection()
+            ->executeQuery('SELECT id FROM movement WHERE amount = 100')
+            ->fetchOne();
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     * @throws Exception
+     */
+    protected function getPeterGroupMovementId()
+    {
+        return $this
+            ->initDbConnection()
+            ->executeQuery('SELECT id FROM movement WHERE amount = 1000')
+            ->fetchOne();
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     * @throws Exception
+     */
     protected function getBrianId()
     {
         return $this
@@ -185,6 +213,34 @@ class TestBase extends WebTestCase
         return $this
             ->initDbConnection()
             ->executeQuery('SELECT id FROM category WHERE name = "Brian Group Expense Category"')
+            ->fetchOne();
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     * @throws Exception
+     */
+    protected function getBrianMovementId()
+    {
+        return $this
+            ->initDbConnection()
+            ->executeQuery('SELECT id FROM movement WHERE amount = 200')
+            ->fetchOne();
+    }
+
+    /**
+     * @return false|mixed
+     *
+     * @throws DBALException
+     * @throws Exception
+     */
+    protected function getBrianGroupMovementId()
+    {
+        return $this
+            ->initDbConnection()
+            ->executeQuery('SELECT id FROM movement WHERE amount = 2000')
             ->fetchOne();
     }
 }
