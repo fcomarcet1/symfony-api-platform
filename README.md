@@ -13,14 +13,13 @@ API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar n
   - JWT Auth (JWT LexikJWTAuthenticationBundle).
   - Reset password
 - Upload user avatar Amazon S3/Digital Ocean Cloud.
-- CRUD Groups
+- Groups management
+- Categories management.
 - Tests.
 
 
-- IN PROGRESS: 
-    - Groups management(Invite another users to groups).
+- IN PROGRESS:
     - CRUD movements.
-    - Categories
     - Upload movements file
     - Reset Token
    
