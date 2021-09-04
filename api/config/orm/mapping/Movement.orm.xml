@@ -8,7 +8,6 @@
         <field name="createdAt" type="datetime"/>
         <field name="updatedAt" type="datetime"/>
 
-
         <many-to-one field="category" target-entity="App\Entity\Category">
             <join-column name="category_id" on-delete="CASCADE"/>
         </many-to-one>

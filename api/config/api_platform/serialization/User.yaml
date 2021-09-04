@@ -20,3 +20,5 @@ App\Entity\User:
       groups: [ user_read ]
     groups:
       groups: [ user_read ]
+    movements:
+      groups: [ user_read ]
