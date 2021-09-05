@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use App\Service\File\FileService;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use League\Flysystem\FileExistsException;
 use Symfony\Component\HttpFoundation\Request;
 
 class UploadAvatarService
@@ -30,7 +31,7 @@ class UploadAvatarService
 
     /**
      * @throws OptimisticLockException
-     * @throws ORMException
+     * @throws ORMException|FileExistsException
      */
     public function uploadAvatar(Request $request, User $user): User
     {
