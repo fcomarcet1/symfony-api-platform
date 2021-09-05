@@ -18,8 +18,8 @@ class GroupRepository extends BaseRepository
 
     public function findOneByIdOrFail(string $id): Group
     {
-        $group = $this->objectRepository->find($id);
-        if ($group === null) {
+        //$group = $this->objectRepository->find($id);
+        if (null === $group = $this->objectRepository->find($id)) {
             throw GroupNotFoundException::fromId($id);
         }
 

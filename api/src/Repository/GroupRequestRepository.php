@@ -29,14 +29,12 @@ class GroupRequestRepository extends BaseRepository
          * ser ade tipo Group la propiedad, doctrine sabe interpretarlo y transformar
          * internamente y obtendremos el mismo resultado.
          */
-        $groupRequest = $this->objectRepository->findOneBy([
-            'user'   => $userId,
-            'group'  => $groupId,
-            'token'  => $token,
-            'status' => GroupRequest::PENDING,
-        ]);
-
-        if ($groupRequest === null) {
+        if (null === $groupRequest = $this->objectRepository->findOneBy([
+                'group'  => $groupId,
+                'user'   => $userId,
+                'token'  => $token,
+                'status' => GroupRequest::PENDING,
+            ])) {
             throw GroupRequestNotFoundException::fromGroupIdUserIdAndToken($groupId, $userId, $token);
         }
 
