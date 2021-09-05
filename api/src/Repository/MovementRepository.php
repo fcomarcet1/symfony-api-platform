@@ -10,8 +10,7 @@ use Doctrine\ORM\ORMException;
 
 class MovementRepository extends BaseRepository
 {
-
-
+    
     protected static function entityClass(): string
     {
         return Movement::class;
