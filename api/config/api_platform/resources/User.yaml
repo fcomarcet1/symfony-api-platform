@@ -7,6 +7,7 @@ App\Entity\User:
       - app.custom.search_filter
       - app.custom.boolean_filter
       - app.custom.exists_filter
+      - app.custom.order_filter
   collectionOperations:
     register:
       method: POST

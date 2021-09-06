@@ -1,7 +1,7 @@
 imports:
   - { resource: api_platform/filters/search-filter.yaml }
   - { resource: api_platform/filters/boolean-filter.yaml }
-  - { resource: api_platform/filters/exists-filter.yaml }
+  - { resource: api_platform/filters/order-filter.yaml }
 
 parameters:
 
