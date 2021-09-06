@@ -26,7 +26,8 @@ final class Version20210903081423 extends AbstractMigration
                 owner_id CHAR(36) NOT NULL,
                 group_id CHAR(36) NOT NULL,
                 status VARCHAR(10) NOT NULL,
-                accepted_at DATETIME DEFAULT NULL,
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 INDEX IDX_category_group_id (group_id),
                 INDEX IDX_category_owner_id (owner_id),
                 CONSTRAINT FK_category_owner_id FOREIGN KEY (owner_id) REFERENCES `user` (id) 

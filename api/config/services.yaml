@@ -11,7 +11,7 @@ services:
       $facebookSecret: '%env(resolve:FACEBOOK_SECRET)%'
       $facebookGraphVersion: '%env(resolve:FACEBOOK_GRAPH_VERSION)%'
 
-  # makes classes in src/ available to be used as services
+  # Make classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
   App\:
     resource: '../src/'
@@ -40,7 +40,7 @@ services:
         priority: 100
       }
 
-  # Custom JWT payload
+  ###> Custom JWT payload ###
   App\Api\Listener\JWTCreatedListener:
     class: App\Api\Listener\JWTCreatedListener
     tags:
@@ -50,7 +50,7 @@ services:
         method: onJWTCreated
       }
 
-  # Custom JWT response on authentication success
+  ###> Custom JWT response on authentication success ###
   App\Api\Listener\JWTAuthenticationSuccessListener:
     class: App\Api\Listener\JWTAuthenticationSuccessListener
     tags:
@@ -59,7 +59,7 @@ services:
         event: lexik_jwt_authentication.on_authentication_success,
         method: onAuthenticationSuccessResponse
       }
-  # Service for upload user avatar Amazon S3/ Digital Ocean Cloud
+  ###> Service for upload user avatar Amazon S3/ Digital Ocean Cloud ###
   app.images.s3:
     class: Aws\S3\S3Client
     arguments:
@@ -70,7 +70,7 @@ services:
           key: '%env(resolve:KEY)%'
           secret: '%env(resolve:SECRET)%'
 
-  # Listener for all classes What implements PreWriteListener Interface
+  ###> Listener for all classes What implements PreWriteListener Interface ###
   _instanceof:
     App\Api\Listener\PreWriteListener\PreWriteListener:
       tags:
@@ -80,3 +80,13 @@ services:
           method: onKernelView,
           priority: 33
         }
+
+  ###> API Platform filters Example: ###
+  ### NameSpace_Class:
+  ###   tags: [ 'api_platform.filter' ]
+
+  ###> API Platform filters yml format ###
+  ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter:
+    tags: [ 'api_platform.filter' ]
+    
+  ###< API Platform filters ###

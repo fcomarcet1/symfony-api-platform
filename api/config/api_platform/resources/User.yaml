@@ -2,6 +2,8 @@ App\Entity\User:
   attributes:
     normalization_context:
       groups: [ user_read ]
+    filters:
+      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter
   collectionOperations:
     register:
       method: POST
