@@ -4,6 +4,7 @@ imports:
   - { resource: api_platform/filters/order-filter.yaml }
   - { resource: api_platform/filters/numeric-filter.yaml }
   - { resource: api_platform/filters/range-filter.yaml }
+  - { resource: api_platform/filters/exists-filter.yaml }
 
 parameters:
 
@@ -108,3 +109,11 @@ services:
   ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter:
     tags: [ 'api_platform.filter' ]
   ###< API Platform filters ###
+
+
+  ###> API Platform customize response ###
+  ## Custom url avatar
+  App\Swagger\Decorator\ApiNormalizer:
+    decorates: 'api_platform.jsonld.normalizer.item'
+
+  ###< API Platform customize response ###

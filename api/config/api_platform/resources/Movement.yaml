@@ -5,6 +5,7 @@ App\Entity\Movement:
     filters:
       - app.custom.numeric_filter
       - app.custom.range_filter
+      - app.custom.search_filter
   collectionOperations:
     post:
       method: POST
