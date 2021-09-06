@@ -2,6 +2,8 @@ imports:
   - { resource: api_platform/filters/search-filter.yaml }
   - { resource: api_platform/filters/boolean-filter.yaml }
   - { resource: api_platform/filters/order-filter.yaml }
+  - { resource: api_platform/filters/numeric-filter.yaml }
+  - { resource: api_platform/filters/range-filter.yaml }
 
 parameters:
 

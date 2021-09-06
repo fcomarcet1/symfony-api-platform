@@ -3,8 +3,8 @@ App\Entity\Movement:
     normalization_context:
       groups: [ movement_read ]
     filters:
-      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter
-      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter
+      - app.custom.numeric_filter
+      - app.custom.range_filter
   collectionOperations:
     post:
       method: POST
