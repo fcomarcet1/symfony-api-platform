@@ -28,13 +28,12 @@ class DownloadFileService
 
         // TODO: Implement this in class
         // Check if exists group and user is member of this group
-        if (null === $group = $movement->getGroup()) {
+        if (null !== $group = $movement->getGroup()) {
             if (!$user->isMemberOfGroup($group)) {
                 throw new MovementDoesNotBelongToGroupException();
             }
         }
 
-        // Check if user is owner of movement
         if (!$movement->isOwnedBy($user)) {
             throw new MovementDoesNotBelongToUserException();
         }
