@@ -1,3 +1,7 @@
+imports:
+  - { resource: api_platform/filters/search-filter.yaml }
+ 
+
 parameters:
 
 services:
