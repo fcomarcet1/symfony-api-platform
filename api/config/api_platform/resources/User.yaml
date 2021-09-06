@@ -4,6 +4,7 @@ App\Entity\User:
       groups: [ user_read ]
     filters:
       - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter
+      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter
   collectionOperations:
     register:
       method: POST

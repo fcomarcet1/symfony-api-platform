@@ -88,5 +88,10 @@ services:
   ###> API Platform filters yml format ###
   ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter:
     tags: [ 'api_platform.filter' ]
-    
+
+  ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter:
+    tags: [ 'api_platform.filter' ]
+
+
+
   ###< API Platform filters ###
