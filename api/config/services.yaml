@@ -92,6 +92,12 @@ services:
   ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter:
     tags: [ 'api_platform.filter' ]
 
+  ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter:
+    tags: [ 'api_platform.filter' ]
 
+  ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter:
+    tags: [ 'api_platform.filter' ]
 
+  ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter:
+    tags: [ 'api_platform.filter' ]
   ###< API Platform filters ###

@@ -2,6 +2,9 @@ App\Entity\Movement:
   attributes:
     normalization_context:
       groups: [ movement_read ]
+    filters:
+      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter
+      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter
   collectionOperations:
     post:
       method: POST

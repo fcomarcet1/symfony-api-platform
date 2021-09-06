@@ -5,6 +5,7 @@ App\Entity\User:
     filters:
       - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter
       - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter
+      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter
   collectionOperations:
     register:
       method: POST
