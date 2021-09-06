@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Service\File;
 
 use App\Service\File\FileService;
+use League\Flysystem\AdapterInterface;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\FilesystemInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -56,7 +57,7 @@ class FileServiceTest extends TestCase
 
         $prefix = 'avatar';
 
-        $response = $this->service->uploadFile($uploadedFile, $prefix);
+        $response = $this->service->uploadFile($uploadedFile, $prefix, AdapterInterface::VISIBILITY_PUBLIC);
 
         $this->assertIsString($response);
     }
@@ -68,7 +69,7 @@ class FileServiceTest extends TestCase
         // Create request with correct field
         $request = new Request([], [], [], [], ['avatar' => $uploadedFile]);
 
-        $response = $this->service->validateFile($request, FileService::AVATAR_INPUT_NAME);
+        $response = $this->service->getAndValidateFile($request, FileService::AVATAR_INPUT_NAME);
 
         $this->assertInstanceOf(UploadedFile::class, $response);
     }
@@ -81,7 +82,7 @@ class FileServiceTest extends TestCase
 
         $this->expectException(BadRequestHttpException::class);
 
-        $this->service->validateFile($request, FileService::AVATAR_INPUT_NAME);
+        $this->service->getAndValidateFile($request, FileService::AVATAR_INPUT_NAME);
     }
 
     public function testDeleteFile(): void

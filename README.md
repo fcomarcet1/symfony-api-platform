@@ -15,13 +15,13 @@ API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar n
 - Upload user avatar Amazon S3/Digital Ocean Cloud.
 - Groups management
 - Categories management.
+- Movements management.
 - Tests.
 
 
 - IN PROGRESS:
-    - CRUD movements.
     - Upload movements file
-    - Reset Token
+
    
 
 

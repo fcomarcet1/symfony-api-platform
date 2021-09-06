@@ -45,7 +45,7 @@ class UploadAvatarServiceTest extends UserServiceTestBase
         // Validate in method $file = $this->fileService->validateFile($request, FileService::AVATAR_INPUT_NAME);
         $this->fileService
             ->expects($this->exactly(1))
-            ->method('validateFile')
+            ->method('getAndValidateFile')
             ->with($request, FileService::AVATAR_INPUT_NAME)
             ->willReturn($file);
 

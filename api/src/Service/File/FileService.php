@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Service\File;
 
-use League\Flysystem\AdapterInterface;
 use League\Flysystem\FileExistsException;
 use League\Flysystem\FilesystemInterface;
 use Psr\Log\LoggerInterface;
@@ -36,14 +35,15 @@ class FileService
     /**
      * @throws FileExistsException
      */
-    public function uploadFile(UploadedFile $file, string $prefix): string
+    public function uploadFile(UploadedFile $file, string $prefix, string $visibility): string
     {
         $fileName = \sprintf('%s/%s.%s', $prefix, \sha1(\uniqid()), $file->guessExtension());
 
         $this->defaultStorage->writeStream(
             $fileName,
             \fopen($file->getPathname(), 'r'),
-            ['visibility' => AdapterInterface::VISIBILITY_PUBLIC]
+            //['visibility' => AdapterInterface::VISIBILITY_PUBLIC]
+            ['visibility' => $visibility]
         );
 
         /*try {
@@ -60,13 +60,11 @@ class FileService
     }
 
     // Get file && Validate input field "avatar" in json
-    public function validateFile(Request $request, string $inputName): UploadedFile
+    public function getAndValidateFile(Request $request, string $inputName): UploadedFile
     {
         //$file = $request->files->get($inputName);
         if (null === $file = $request->files->get($inputName)) {
-            throw new BadRequestHttpException(
-                \sprintf('Cannot get file with input name %s', $inputName)
-            );
+            throw new BadRequestHttpException(\sprintf('Cannot get file with input name %s', $inputName));
         }
 
         return $file;
