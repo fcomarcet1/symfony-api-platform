@@ -26,6 +26,7 @@ class DownloadFileService
         // Get movement to download
         $movement = $this->movementRepository->findOneByFilePathOrFail($filepath);
 
+        // TODO: Implement this in class
         // Check if exists group and user is member of this group
         if (null === $group = $movement->getGroup()) {
             if (!$user->isMemberOfGroup($group)) {
