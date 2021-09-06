@@ -5,6 +5,8 @@ App\Entity\User:
     filters:
       - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter
       - app.custom.search_filter
+      - app.custom.boolean_filter
+      - app.custom.exists_filter
   collectionOperations:
     register:
       method: POST
