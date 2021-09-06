@@ -16,13 +16,9 @@ API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar n
 - Groups management
 - Categories management.
 - Movements management.
+- Upload movements file Amazon S3/Digital Ocean Cloud.
+- Custom Filters Api Platform
 - Tests.
-
-
-- IN PROGRESS:
-    - Upload movements file
-
-   
 
 
 ## Getting Started
