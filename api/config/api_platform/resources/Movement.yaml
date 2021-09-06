@@ -24,6 +24,31 @@ App\Entity\Movement:
                   file:
                     type: string
                     format: binary
+                    required: true
+    download_file:
+      method: POST
+      path: /movements/{id}/download_file
+      controller: App\Api\Action\Movement\DownloadFile
+      deserialize: false
+      openapi_context:
+        summary: Download a file attached to a movement
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  filePath:
+                    type: string
+                    required: true
+        responses:
+          200:
+            description: OK
+            content:
+              application/octet-stream:
+                schema:
+                  type: string
+                  format: binary
   itemOperations:
     get:
       method: GET

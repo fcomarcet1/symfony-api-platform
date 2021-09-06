@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Service\File;
 
 use League\Flysystem\FileExistsException;
+use League\Flysystem\FileNotFoundException;
 use League\Flysystem\FilesystemInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -57,6 +58,15 @@ class FileService
       }*/
 
         return $fileName;
+    }
+
+    public function downloadFile(string $path): ?string
+    {
+        try {
+            return $this->defaultStorage->read($path);
+        } catch (FileNotFoundException $e) {
+            throw new \App\Exception\File\FileNotFoundException();
+        }
     }
 
     // Get file && Validate input field "avatar" in json
