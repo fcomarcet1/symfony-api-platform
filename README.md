@@ -1,9 +1,8 @@
-# 📖 My Finance. API REST con SYMFONY 5 && API PLATFORM.
-
+# 📖 My Finances. APIREST with SYMFONY 5 && API PLATFORM.
 
 ## Description
 
-API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar nuestras finanzas personales.
+APIREST api-platform & Symfony 5.
 
 - Documentation **Api-Platform**.
 - Complete Authentication:
@@ -23,14 +22,14 @@ API REST empleando api-platform y Symfony 5. Esta API nos permitirá gestionar n
 
 ## Getting Started
 
-1. Clona el repositorio.
-2. Ejecuta `cd ~/symfony-api-platform/api` && `make run` para levantar los contenedores(nginx + php8.0 + MySQL8)
-3. Ejecuta `cd ~/symfony-api-platform/mailer` && `make run` para levantar Mailer Service
-4. Ejecuta `cd ~/symfony-api-platform/rabbitmq` && `make run` para levantar RabbitMQ Service
-5. Ejecuta `make composer-install` en la raíz del proyecto para instalar las dependencias.
-6. Instala las migraciones de base de datos: `make migrations`.
-7. Accede el servidor local de desarrollo para comprobar que funciona correctamente: `http://localhost:250`.
-8. Documentacion de la API: `http://localhost:250/api/v1/docs`
+1. Clone repository.
+2. Execute `cd ~/symfony-api-platform/api` && `make run` --> up containers(nginx + php8.0 + MySQL8)
+3. Execute `cd ~/symfony-api-platform/mailer` && `make run` -->up Mailer Service
+4. Execute `cd ~/symfony-api-platform/rabbitmq` && `make run` up RabbitMQ Service
+5. Execute `make composer-install` At root proyect for install  dependencies.
+6. Add migrations: `make migrations`.
+7. Check your local server: `http://localhost:250`.
+8. API Documentatiob: `http://localhost:250/api/v1/docs`
 9. Happy codding my friends!
 
 
